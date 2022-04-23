@@ -28,12 +28,10 @@ let yourInfoBtn = document.getElementById('your-info-btn');
             content: learningContent.value,
             })
         })
-            .then(res => {
-            console.log(res);
-            console.log('成功');
+        .then(res => {
+            console.log(res)
             })
             .catch(err => console.log(err));
-
     });
 
 }
