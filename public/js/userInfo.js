@@ -47,7 +47,7 @@
             totalTimeArrangement[1] * 60 +
             totalTimeArrangement[2];
 
-        let url = "/user/learning_time";
+        let url = "/user/learning-time-update";
 
         fetch(url, {
             method: "POST",

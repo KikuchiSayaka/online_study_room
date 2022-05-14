@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'name' => '名無しさん',
             'learning_content' => '学習内容',
             'total_minutes' => 0,
+            'is_online' => 1,
             // 'email' => $data['email'],
             // 'password' => Hash::make($data['password']),
         ]);
