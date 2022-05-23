@@ -41,27 +41,30 @@
 
     // 他のオンラインユーザのタイマーカウントアップ
     let otherUserTime = setInterval(otherUserCountUpFunc, 60000);
+
     function otherUserCountUpFunc() {
         let OtherUserTotalTime = document.querySelectorAll(
             ".OtherUserTotalTime"
         );
-        // console.log(OtherUserTotalTime[0].innerHTML);
+
         for (let i = 0; i < OtherUserTotalTime.length; i++) {
             // 取得した他ユーザの時間を：で時間と分に分けて配列に格納
             let totalTimeArr = OtherUserTotalTime[i].innerHTML.split(":");
 
             // 分の部分へ＋1分追加
-            let m = Number(totalTimeArr[1]) + 1;
+            let otherMin = Number(totalTimeArr[1]) + 1;
 
-            // もし、60分になったら、時間へ＋1
-            if (m === 60) {
+            // もし60分になったら、時間へ＋1
+            if (otherMin === 60) {
                 Number(totalTimeArr[0]) + 1;
             }
 
-            m = String(m).padStart(2, "0");
-            let h = String(totalTimeArr[0]).padStart(2, "0");
+            // 文字列に変換して表示を2桁に
+            m = String(otherMin).padStart(2, "0");
+            let otherHour = String(totalTimeArr[0]).padStart(2, "0");
 
-            OtherUserTotalTime[i].innerHTML = h + ":" + m;
+            // 時間の表示部分を更新
+            OtherUserTotalTime[i].innerHTML = otherHour + ":" + otherMin;
         }
     }
 }
