@@ -91,41 +91,22 @@
                         <div id="learning-content-output" class="learning_content">勉強内容</div>
                         <div id="room_timer" class="time">00:00:00</div>
                     </div>
-                    <div class="seat other">
-                        <h3 class="guest_name fw-bold">他の学習者</h3>
-                        <div class="learning_content">勉強内容</div>
-                        <div class="time">00:00:00</div>
-                    </div>
-                    <div class="seat other">
-                        <h3 class="guest_name fw-bold">他の学習者</h3>
-                        <div class="learning_content">勉強内容</div>
-                        <div class="time">00:00:00</div>
-                    </div>
-                    <div class="seat other">
-                        <h3 class="guest_name fw-bold">他の学習者</h3>
-                        <div class="learning_content">勉強内容</div>
-                        <div class="time">00:00:00</div>
-                    </div>
-                    <div class="seat other">
-                        <h3 class="guest_name fw-bold">他の学習者</h3>
-                        <div class="learning_content">勉強内容</div>
-                        <div class="time">00:00:00</div>
-                    </div>
-                    <div class="seat other">
-                        <h3 class="guest_name fw-bold">他の学習者</h3>
-                        <div class="learning_content">勉強内容</div>
-                        <div class="time">00:00:00</div>
-                    </div>
-                    <div class="seat other">
-                        <h3 class="guest_name fw-bold">他の学習者</h3>
-                        <div class="learning_content">勉強内容</div>
-                        <div class="time">00:00:00</div>
-                    </div>
-                    <div class="seat vacancy">
-                        <h3 class="guest_name fw-bold">空室</h3>
-                        <div class="learning_content"></div>
-                        <div class="time"></div>
-                    </div>
+
+                    @foreach ($users as $user)
+                        <div class="seat other">
+                            <h3 class="guest_name fw-bold">{{ $user->name }}</h3>
+                            <div class="learning_content">{{ $user->learning_content }}</div>
+                            <div class="OtherUserTotalTime">{{ $user->total_minutes }}</div>
+                        </div>
+                    @endforeach
+
+                    @for ($i = 0; $i < $vacancies; $i++)
+                        <div class="seat vacancy">
+                            <h3 class="guest_name fw-bold">空室</h3>
+                            <div class="learning_content"></div>
+                            <div class="time"></div>
+                        </div>
+                    @endfor
                 </div>
             </div>
             <div class="side_bar col-sm-3 ms-sm-3">

@@ -16,12 +16,12 @@ class LearningTimeController extends Controller
 
     public function update(Request $request)
     {
-        Log::info($request->totalTime);
+        // Log::info($request->totalTime);
 
         $user = Auth::user();
         $user->total_minutes = $request->totalTime;
         $user->save();
 
-        return  view('room');
+        // return  view('room');
     }
 }

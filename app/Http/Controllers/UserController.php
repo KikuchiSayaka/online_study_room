@@ -16,14 +16,23 @@ class UserController extends Controller
                 ->take(7)
                 ->get();
 
-        // Log::info($users);
+        // dd($users);
 
-        return view('room');
+        // 何件習得できたかカウントする
+        $count = count($users);
+
+        // 上限値7から取得件数を引いて空室分を調べる
+        $vacancies = 7-$count;
+
+        Log::info($users);
+
+        return view('room')
+        ->with(compact('users', 'vacancies'));
     }
 
     public function update(Request $request)
     {
-        // Log::info($request->totalTime);
+        Log::info($request->totalTime);
 
         $user = Auth::user();
         $user->name = $request->name;

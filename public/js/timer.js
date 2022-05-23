@@ -1,8 +1,11 @@
 "use strict";
 {
+    let totalSeconds = 0;
+    let otherUserTotalSeconds = 0;
+
+    // ユーザのタイマーカウントアップ
     // 1秒ごとに関数countUpTimerを実行する。setIntervalはwindowで提供される
     let timerVariable = setInterval(countUpTimer, 1000);
-    let totalSeconds = 0;
 
     function countUpTimer() {
         ++totalSeconds;
@@ -35,4 +38,17 @@
             flag = 0;
         }
     });
+
+    // 他のオンラインユーザのタイマーカウントアップ
+    let otherUserTime = setInterval(otherUserCountUpFunc, 1000);
+    function otherUserCountUpFunc() {
+        let OtherUserTotalTime = document.querySelectorAll(
+            ".OtherUserTotalTime"
+        );
+        // console.log(OtherUserTotalTime[0].innerHTML);
+        for (let i = 0; i < OtherUserTotalTime.length; i++) {
+            let totalTimeArr = OtherUserTotalTime[i].innerHTML.split(":");
+            // console.log(totalTimeArr[1]);
+        }
+    }
 }
