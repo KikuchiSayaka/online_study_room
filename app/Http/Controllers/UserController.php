@@ -24,7 +24,7 @@ class UserController extends Controller
         // 上限値7から取得件数を引いて空室分を調べる
         $vacancies = 7-$count;
 
-        Log::info($users);
+        // Log::info($users);
 
         return view('room')
         ->with(compact('users', 'vacancies'));

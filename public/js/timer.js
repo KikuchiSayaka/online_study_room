@@ -40,15 +40,28 @@
     });
 
     // 他のオンラインユーザのタイマーカウントアップ
-    let otherUserTime = setInterval(otherUserCountUpFunc, 1000);
+    let otherUserTime = setInterval(otherUserCountUpFunc, 60000);
     function otherUserCountUpFunc() {
         let OtherUserTotalTime = document.querySelectorAll(
             ".OtherUserTotalTime"
         );
         // console.log(OtherUserTotalTime[0].innerHTML);
         for (let i = 0; i < OtherUserTotalTime.length; i++) {
+            // 取得した他ユーザの時間を：で時間と分に分けて配列に格納
             let totalTimeArr = OtherUserTotalTime[i].innerHTML.split(":");
-            // console.log(totalTimeArr[1]);
+
+            // 分の部分へ＋1分追加
+            let m = Number(totalTimeArr[1]) + 1;
+
+            // もし、60分になったら、時間へ＋1
+            if (m === 60) {
+                Number(totalTimeArr[0]) + 1;
+            }
+
+            m = String(m).padStart(2, "0");
+            let h = String(totalTimeArr[0]).padStart(2, "0");
+
+            OtherUserTotalTime[i].innerHTML = h + ":" + m;
         }
     }
 }
