@@ -42,8 +42,8 @@
         let totalTime = document.getElementById("timer").innerHTML;
         let totalTimeArr = totalTime.split(":");
 
-        let totalMinutes =
-            totalTimeArr[0] * 360 + totalTimeArr[1] * 60 + totalTimeArr[2];
+        // 秒数totalTimeArr[2]は捨てて、時間と分だけ取得し、分単位に計算し直す
+        let totalMinutes = totalTimeArr[0] * 60 + totalTimeArr[1];
 
         let url = "/user/learning-time-update";
 
@@ -71,11 +71,9 @@
     function updateOtherTimefunc() {
         otherUserTimes.forEach(function (t) {
             let otherTime = t.innerHTML;
-            let hour = String(Math.floor(otherTime / 3600)).padStart(2, "0");
-            let minute = String(
-                Math.floor((otherTime - hour * 3600) / 60)
-            ).padStart(2, "0");
-            // console.log(hour + ":" + minute);
+            let hour = String(Math.floor(otherTime / 60)).padStart(2, "0");
+            let minute = String(otherTime - hour * 60).padStart(2, "0");
+
             t.innerHTML = hour + ":" + minute;
         });
     }

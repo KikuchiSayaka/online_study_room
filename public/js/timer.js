@@ -51,17 +51,21 @@
             // 取得した他ユーザの時間を：で時間と分に分けて配列に格納
             let totalTimeArr = OtherUserTotalTime[i].innerHTML.split(":");
 
+            let otherMin = Number(totalTimeArr[1]);
+            let otherHour = Number(totalTimeArr[0]);
+
             // 分の部分へ＋1分追加
-            let otherMin = Number(totalTimeArr[1]) + 1;
+            otherMin = otherMin + 1;
 
             // もし60分になったら、時間へ＋1
             if (otherMin === 60) {
-                Number(totalTimeArr[0]) + 1;
+                otherHour = otherHour + 1;
+                otherMin = 1;
             }
 
             // 文字列に変換して表示を2桁に
-            m = String(otherMin).padStart(2, "0");
-            let otherHour = String(totalTimeArr[0]).padStart(2, "0");
+            otherMin = String(otherMin).padStart(2, "0");
+            otherHour = String(otherHour).padStart(2, "0");
 
             // 時間の表示部分を更新
             OtherUserTotalTime[i].innerHTML = otherHour + ":" + otherMin;
