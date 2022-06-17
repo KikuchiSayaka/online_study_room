@@ -40,6 +40,7 @@ class UserController extends Controller
         $user->learning_content = $request->content;
         $user->save();
 
-        return  view('room');
+        return response() ->json(compact('user'));
+        // view('room');
     }
 }

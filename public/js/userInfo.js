@@ -7,8 +7,66 @@
         "learning-content-output"
     );
     let yourInfoBtn = document.getElementById("your-info-btn");
-    let otherUserTimes = document.querySelectorAll(".OtherUserTotalTime");
+    let otherUserTimes = document.querySelectorAll(
+        ".seat.other.seatChange .time"
+    );
+    let mySeat = document.querySelector("#yourData");
 
+    function otherUserUpdate(users) {
+        // usersの配列をusers定数に入れる。is_online===1のユーザだけの配列
+        // const users = data.users;
+
+        // 自分以外の席seatChangeクラスを取得して配列にする
+        let seatChange = [...document.querySelectorAll(".seatChange")];
+
+        // 一旦、全部消す。
+        for (let i = 0; i < seatChange.length; i++) {
+            seatChange[i].remove();
+        }
+
+        for (let i = 0; i < users.length; i++) {
+            let hour = String(Math.floor(users[i].total_minutes / 60)).padStart(
+                2,
+                "0"
+            );
+            let minute = String(users[i].total_minutes - hour * 60).padStart(
+                2,
+                "0"
+            );
+            let totalTime = hour + ":" + minute;
+            mySeat.insertAdjacentHTML(
+                "afterend",
+                `
+                <div class="seat other seatChange">
+                    <h3 class="guest_name fw-bold">${users[i].name}</h3>
+                    <div class="learning_content">${users[i].learning_content}}</div>
+                    <div class="time">${totalTime}</div>
+                </div>
+                `
+            );
+        }
+
+        // オンラインユーザ描画後に一番最後の席の人を取得
+        let lastOnlineUserSeat = document.querySelector(
+            ".seat.other.seatChange:last-child"
+        );
+
+        for (let i = 0; i < 7 - users.length; i++) {
+            // 一番最後の席の人lastOnlineUserSeatの後に挿入
+            lastOnlineUserSeat.insertAdjacentHTML(
+                "afterend",
+                `
+                <div class="seat vacancy seatChange">
+                    <h3 class="guest_name fw-bold">空室</h3>
+                    <div class="learning_content"></div>
+                    <div class="time"></div>
+                </div>
+                `
+            );
+        }
+    }
+
+    // ユーザー名と学習内容を変更したい時のフォーム処理
     yourInfoBtn.addEventListener("click", () => {
         yourNameOutput.innerHTML = yourName.value;
         learningContentOutput.innerHTML = learningContent.value;
@@ -32,10 +90,19 @@
                 console.log(res);
             })
             .catch((err) => console.log(err));
+
+        // .then((response) => {
+        //     return response.json();
+        // })
+        // .then((data) => {
+        //     console.log(data);
+        // })
+        // .catch((err) => {
+        //     console.log(err);
+        // });
     });
 
-    // 総勉強時間をデータベースに格納する
-
+    // ユーザーの総勉強時間を1分ごとにデータベースに格納する
     let updateTime = setInterval(updateTotalTime, 60000);
 
     function updateTotalTime() {
@@ -65,16 +132,42 @@
             .catch((err) => console.log(err));
     }
 
-    // 他のオンラインユーザの勉強時間を計算して当てはめる
+    // DBから取得した他のオンラインユーザの勉強時間をの表示を分単位から00:00に加工
     window.addEventListener("load", updateOtherTimefunc());
 
     function updateOtherTimefunc() {
-        otherUserTimes.forEach(function (t) {
-            let otherTime = t.innerHTML;
+        otherUserTimes.forEach(function (time) {
+            let otherTime = time.innerHTML;
             let hour = String(Math.floor(otherTime / 60)).padStart(2, "0");
             let minute = String(otherTime - hour * 60).padStart(2, "0");
 
-            t.innerHTML = hour + ":" + minute;
+            time.innerHTML = hour + ":" + minute;
         });
+    }
+
+    // 他のユーザがオンラインか否か30分おきに確認して席次表を変更
+    let updateOtherUserList = setInterval(OtherUserList, 1000);
+
+    function OtherUserList() {
+        let url = "/room/other-list";
+
+        fetch(url, {
+            method: "GET",
+            headers: {
+                "X-CSRF-TOKEN": document
+                    .querySelector('meta[name="csrf-token"]')
+                    .getAttribute("content"),
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                otherUserUpdate(data.users);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 }
