@@ -12,7 +12,7 @@
     );
     let mySeat = document.querySelector("#yourData");
 
-    function ChangeTimeDisplayFunc(totalMinutes) {
+    function ChangeDisplayTimeFunc(totalMinutes) {
         let hour = String(Math.floor(totalMinutes / 60)).padStart(2, "0");
         let minute = String(totalMinutes - hour * 60).padStart(2, "0");
         let displayTime = hour + ":" + minute;
@@ -41,7 +41,7 @@
             //     2,
             //     "0"
             // );
-            let displayTime = ChangeTimeDisplayFunc(users[i].total_minutes);
+            let displayTime = ChangeDisplayTimeFunc(users[i].total_minutes);
             mySeat.insertAdjacentHTML(
                 "afterend",
                 `
@@ -151,7 +151,7 @@
 
             // time.innerHTML = hour + ":" + minute;
 
-            time.innerHTML = ChangeTimeDisplayFunc(otherTime);
+            time.innerHTML = ChangeDisplayTimeFunc(otherTime);
         });
     }
 
@@ -174,7 +174,7 @@
                 return response.json();
             })
             .then((data) => {
-                // resoinseで返ってきたdataの中のusers(is_online===1のユーザだけの配列)を引数にして関数otherUserUpdateを動かす
+                // responseで返ってきたdataの中のusers(is_online===1のユーザだけの配列)を引数にして関数otherUserUpdateを動かす
                 otherUserUpdate(data.users);
             })
             .catch((err) => {
