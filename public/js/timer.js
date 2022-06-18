@@ -1,9 +1,7 @@
 "use strict";
 {
     let totalSeconds = 0;
-    let otherUserTimes = document.querySelectorAll(
-        ".seat.other.seatChange .time"
-    );
+
     // ユーザのタイマーカウントアップ
     // 1秒ごとに関数countUpTimerを実行する。setIntervalはwindowで提供される
     let timerVariable = setInterval(countUpTimer, 1000);
@@ -40,10 +38,14 @@
         }
     });
 
-    // 他のオンラインユーザのタイマーカウントアップ
+    // 他のオンラインユーザのタイマーを1分ごとに時間を+1分カウントアップさせる
     let otherUserTimeCountUp = setInterval(otherUserCountUpFunc, 60000);
 
     function otherUserCountUpFunc() {
+        let otherUserTimes = document.querySelectorAll(
+            ".seat.other.seatChange .time"
+        );
+        console.log(otherUserTimes);
         for (let i = 0; i < otherUserTimes.length; i++) {
             // 取得した他ユーザの時間を：で時間と分に分けて配列に格納
             let totalTimeArr = otherUserTimes[i].innerHTML.split(":");
@@ -65,7 +67,7 @@
             otherHour = String(otherHour).padStart(2, "0");
 
             // 時間の表示部分を更新
-            OtherUserTotalTime[i].innerHTML = otherHour + ":" + otherMin;
+            otherUserTimes[i].innerHTML = otherHour + ":" + otherMin;
         }
     }
 }
