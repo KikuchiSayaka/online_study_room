@@ -12,6 +12,14 @@
     );
     let mySeat = document.querySelector("#yourData");
 
+    function ChangeTimeDisplayFunc(totalMinutes) {
+        let hour = String(Math.floor(totalMinutes / 60)).padStart(2, "0");
+        let minute = String(totalMinutes - hour * 60).padStart(2, "0");
+        let displayTime = hour + ":" + minute;
+
+        return displayTime;
+    }
+
     function otherUserUpdate(users) {
         // usersの配列をusers定数に入れる。is_online===1のユーザだけの配列
         // const users = data.users;
@@ -23,24 +31,24 @@
         for (let i = 0; i < seatChange.length; i++) {
             seatChange[i].remove();
         }
-
+        // is_online="1"のユーザの席を挿入していく
         for (let i = 0; i < users.length; i++) {
-            let hour = String(Math.floor(users[i].total_minutes / 60)).padStart(
-                2,
-                "0"
-            );
-            let minute = String(users[i].total_minutes - hour * 60).padStart(
-                2,
-                "0"
-            );
-            let totalTime = hour + ":" + minute;
+            // let hour = String(Math.floor(users[i].total_minutes / 60)).padStart(
+            //     2,
+            //     "0"
+            // );
+            // let minute = String(users[i].total_minutes - hour * 60).padStart(
+            //     2,
+            //     "0"
+            // );
+            let displayTime = ChangeTimeDisplayFunc(users[i].total_minutes);
             mySeat.insertAdjacentHTML(
                 "afterend",
                 `
                 <div class="seat other seatChange">
                     <h3 class="guest_name fw-bold">${users[i].name}</h3>
                     <div class="learning_content">${users[i].learning_content}}</div>
-                    <div class="time">${totalTime}</div>
+                    <div class="time">${displayTime}</div>
                 </div>
                 `
             );
@@ -132,21 +140,23 @@
             .catch((err) => console.log(err));
     }
 
-    // DBから取得した他のオンラインユーザの勉強時間をの表示を分単位から00:00に加工
-    window.addEventListener("load", updateOtherTimefunc());
+    // 初めて画面を開いた時、DBから取得した他のオンラインユーザの勉強時間をの表示を分換算から00:00に加工
+    window.addEventListener("load", firstOpenOtherTimefunc());
 
-    function updateOtherTimefunc() {
+    function firstOpenOtherTimefunc() {
         otherUserTimes.forEach(function (time) {
             let otherTime = time.innerHTML;
-            let hour = String(Math.floor(otherTime / 60)).padStart(2, "0");
-            let minute = String(otherTime - hour * 60).padStart(2, "0");
+            // let hour = String(Math.floor(otherTime / 60)).padStart(2, "0");
+            // let minute = String(otherTime - hour * 60).padStart(2, "0");
 
-            time.innerHTML = hour + ":" + minute;
+            // time.innerHTML = hour + ":" + minute;
+
+            time.innerHTML = ChangeTimeDisplayFunc(otherTime);
         });
     }
 
-    // 他のユーザがオンラインか否か30分おきに確認して席次表を変更
-    let updateOtherUserList = setInterval(OtherUserList, 1000);
+    // 30分おきにオンラインの他ユーザを入れ替えて席次表を更新
+    let updateOtherUserList = setInterval(OtherUserList, 1800000);
 
     function OtherUserList() {
         let url = "/room/other-list";
@@ -164,6 +174,7 @@
                 return response.json();
             })
             .then((data) => {
+                // resoinseで返ってきたdataの中のusers(is_online===1のユーザだけの配列)を引数にして関数otherUserUpdateを動かす
                 otherUserUpdate(data.users);
             })
             .catch((err) => {
