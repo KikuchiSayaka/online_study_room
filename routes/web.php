@@ -37,4 +37,4 @@ Route::get('/room/other-list', [App\Http\Controllers\OtherUserListController::cl
 
 Route::get('/exit', function () {
     return view('exit');
-});
+})->name('exit');
