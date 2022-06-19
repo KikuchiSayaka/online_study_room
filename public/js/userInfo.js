@@ -181,4 +181,26 @@
                 console.log(err);
             });
     }
+
+    // ウインドウを閉じたユーザはis_online=0にする
+    window.addEventListener("beforeunload", (event) => {
+        let url = "/user/exit";
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": document
+                    .querySelector('meta[name="csrf-token"]')
+                    .getAttribute("content"),
+                "Content-Type": "application/json",
+            },
+            // body: JSON.stringify({
+            //     totalTime: totalMinutes,
+            // }),
+        })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => console.log(err));
+    });
 }
