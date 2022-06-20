@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('js')
+    <script src="{{ asset('js/timer.js') }}" defer></script>
+    <script src="{{ asset('js/userInfo.js') }}" defer></script>
+    <script src="{{ asset('js/pomodoroTimer.js') }}" defer></script>
+@endsection
+
 @section('content')
 
         <div class="container d-sm-flex justify-content-center my-sm-5 my-3">
