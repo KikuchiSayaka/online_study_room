@@ -63,6 +63,9 @@
                                                 document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('my-page') }}">
+                                        {{ __('マイページ') }}
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

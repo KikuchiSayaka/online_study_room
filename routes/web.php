@@ -30,10 +30,15 @@ Auth::routes();
 Route::get('/room', [App\Http\Controllers\UserController::class, 'index'])->name('room');
 
 Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+
 Route::post('/user/learning-time-update', [App\Http\Controllers\LearningTimeController::class, 'update'])->name('learning-time-update.update');
+
 Route::post('/user/exit', [App\Http\Controllers\ExitController::class, 'update'])->name('exit.update');
 
+
 Route::get('/room/other-list', [App\Http\Controllers\OtherUserListController::class, 'update'])->name('room.other-list');
+
+Route::get('/my-page', [App\Http\Controllers\RecordController::class, 'index'])->name('my-page');
 
 Route::get('/exit', function () {
     return view('exit');

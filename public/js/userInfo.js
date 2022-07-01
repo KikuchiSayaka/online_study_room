@@ -12,6 +12,7 @@
     );
     let mySeat = document.querySelector("#yourData");
 
+    // 分換算を00:00表示に変更する処理の関数
     function ChangeDisplayTimeFunc(totalMinutes) {
         let hour = String(Math.floor(totalMinutes / 60)).padStart(2, "0");
         let minute = String(totalMinutes - hour * 60).padStart(2, "0");
@@ -20,6 +21,7 @@
         return displayTime;
     }
 
+    // 他のユーザの描画処理の関数
     function otherUserUpdate(users) {
         // usersの配列をusers定数に入れる。is_online===1のユーザだけの配列
         // const users = data.users;
@@ -33,14 +35,6 @@
         }
         // is_online="1"のユーザの席を挿入していく
         for (let i = 0; i < users.length; i++) {
-            // let hour = String(Math.floor(users[i].total_minutes / 60)).padStart(
-            //     2,
-            //     "0"
-            // );
-            // let minute = String(users[i].total_minutes - hour * 60).padStart(
-            //     2,
-            //     "0"
-            // );
             let displayTime = ChangeDisplayTimeFunc(users[i].total_minutes);
             mySeat.insertAdjacentHTML(
                 "afterend",
@@ -194,9 +188,30 @@
                     .getAttribute("content"),
                 "Content-Type": "application/json",
             },
-            // body: JSON.stringify({
-            //     totalTime: totalMinutes,
-            // }),
+        })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => console.log(err));
+    });
+
+    // ウインドウを閉じたユーザの学習記録をrecordテーブルに登録する
+    window.addEventListener("beforeunload", (event) => {
+        let url = "/user/store";
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": document
+                    .querySelector('meta[name="csrf-token"]')
+                    .getAttribute("content"),
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: yourName.value,
+                content: learningContent.value,
+                totalTime: totalMinutes,
+            }),
         })
             .then((res) => {
                 console.log(res);
