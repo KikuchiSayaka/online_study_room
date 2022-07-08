@@ -33,13 +33,15 @@ Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update
 
 Route::post('/user/learning-time-update', [App\Http\Controllers\LearningTimeController::class, 'update'])->name('learning-time-update.update');
 
-Route::post('/user/exit', [App\Http\Controllers\ExitController::class, 'update'])->name('exit.update');
+Route::post('/user/record', [App\Http\Controllers\ExitController::class, 'update'])->name('exit.update');
+
+Route::post('/exit', [App\Http\Controllers\ExitController::class, 'index'])->name('exit.index');
 
 
 Route::get('/room/other-list', [App\Http\Controllers\OtherUserListController::class, 'update'])->name('room.other-list');
 
 Route::get('/my-page', [App\Http\Controllers\RecordController::class, 'index'])->name('my-page');
 
-Route::get('/exit', function () {
-    return view('exit');
-})->name('exit');
+// Route::get('/exit', function () {
+//     return view('exit');
+// })->name('exit');

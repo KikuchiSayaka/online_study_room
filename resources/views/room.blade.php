@@ -65,7 +65,7 @@
                 </div>
                 <div class="side_bar_item  mt-sm-5 mt-4">
                     <p class="text-center">勉強をやめるときはこちらへ</p>
-                    <form method="POST" action="{{ route('exit.update') }}">
+                    <form method="POST" action="{{ route('exit.index') }}">
                         @csrf
                         {{-- <a href="/exit" class="btn side-button" type="button">退室</a> --}}
                         <button class="btn side-button">退室</button>

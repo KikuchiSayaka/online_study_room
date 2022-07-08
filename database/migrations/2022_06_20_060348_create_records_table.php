@@ -16,7 +16,7 @@ class CreateRecordsTable extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->string('learning_content')->default('学習内容');
+            $table->string('learning_content')->default('学習内容')->nullable();;
             $table->integer('total_minutes');
             $table->timestamps();
         });
