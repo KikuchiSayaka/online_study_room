@@ -10,6 +10,10 @@ use App\Models\Record;
 
 class ExitController extends Controller
 {
+    public function index()
+    {
+        return view('exit');
+    }
 
     /**
      * Update the specified resource in storage.
@@ -20,17 +24,18 @@ class ExitController extends Controller
      */
     public function update(Request $request)
     {
+        // \Log::info('確認');
         $user = Auth::user();
         $user->is_online = 0;
         $user->save();
 
         $record = new Record;
-        $record->name = $request->name;
-        $record->learning_content = $request->learning_content;
-        $record->total_minutes = $request->total_minutes;
+        $record->user_id = $user->id;
+        $record->learning_content = $user->learning_content;
+        $record->total_minutes = $user->total_minutes;
         $record->save();
 
-        return redirect()->route('exit');
+        // return redirect()->route('exit');
     }
 
 }
