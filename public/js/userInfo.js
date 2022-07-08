@@ -176,9 +176,9 @@
             });
     }
 
-    // ウインドウを閉じたユーザはis_online=0にする
+    // ウインドウを閉じたユーザのusersテーブルのis_online=0に、学習記録をrecordテーブルに登録
     window.addEventListener("beforeunload", (event) => {
-        let url = "/user/exit";
+        let url = "/user/record";
 
         fetch(url, {
             method: "POST",
@@ -191,30 +191,7 @@
         })
             .then((res) => {
                 console.log(res);
-            })
-            .catch((err) => console.log(err));
-    });
-
-    // ウインドウを閉じたユーザの学習記録をrecordテーブルに登録する
-    window.addEventListener("beforeunload", (event) => {
-        let url = "/user/store";
-
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "X-CSRF-TOKEN": document
-                    .querySelector('meta[name="csrf-token"]')
-                    .getAttribute("content"),
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: yourName.value,
-                content: learningContent.value,
-                totalTime: totalMinutes,
-            }),
-        })
-            .then((res) => {
-                console.log(res);
+                console.log("成功");
             })
             .catch((err) => console.log(err));
     });
