@@ -1,9 +1,13 @@
 // 1rem = 16px
+ul {
+    list-style: none;
+    padding: 0;
+}
 
 .btn {
     color: #fff;
-    background-color: #1FABD5;
-    border-color: #1FABD5;
+    background-color: #1fabd5;
+    border-color: #1fabd5;
     border-radius: 2rem;
     font-weight: bold;
 }
@@ -14,14 +18,14 @@
 }
 
 footer {
-    background-color: #6A6A6A;
+    background-color: #6a6a6a;
     color: #fff;
     font-size: 10px;
     padding: 1.5rem;
 }
 
 .border-flame {
-    border: 1px solid #D1D1D1;
+    border: 1px solid #d1d1d1;
     border-radius: 12px;
 }
 
@@ -32,5 +36,5 @@ footer {
 .btn:hover {
     color: #212529;
     background-color: #fff;
-    transform: scale(.9);
+    transform: scale(0.9);
 }

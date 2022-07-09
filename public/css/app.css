@@ -11285,10 +11285,15 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+ul {
+  list-style: none;
+  padding: 0;
+}
+
 .btn {
   color: #fff;
-  background-color: #1FABD5;
-  border-color: #1FABD5;
+  background-color: #1fabd5;
+  border-color: #1fabd5;
   border-radius: 2rem;
   font-weight: bold;
 }
@@ -11299,14 +11304,14 @@ textarea.form-control-lg {
 }
 
 footer {
-  background-color: #6A6A6A;
+  background-color: #6a6a6a;
   color: #fff;
   font-size: 10px;
   padding: 1.5rem;
 }
 
 .border-flame {
-  border: 1px solid #D1D1D1;
+  border: 1px solid #d1d1d1;
   border-radius: 12px;
 }
 
@@ -11471,4 +11476,18 @@ dl.pomodoro_timer dd span {
 
 .exit-board {
   max-width: 40rem;
+}
+
+table.table {
+  max-width: 50rem;
+  margin: auto;
+  text-align: center;
+}
+
+thead.main-bg-color th {
+  background-color: #d7edf4;
+}
+
+tbody tr:nth-of-type(2n) {
+  background-color: #e1e9ea;
 }
