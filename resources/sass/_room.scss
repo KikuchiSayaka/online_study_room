@@ -70,8 +70,8 @@ dl.pomodoro_timer {
 }
 
 .seat {
-    background: #d7edf4 0% 0% no-repeat padding-box;
-    border: 2px solid #1fabd5;
+    background: $light-color 0% 0% no-repeat padding-box;
+    border: 2px solid $button-bg;
     padding: 0.5rem;
     word-break: break-all;
     min-height: 7rem;

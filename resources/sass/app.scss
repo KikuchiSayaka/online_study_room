@@ -1,14 +1,14 @@
 // Fonts
 
-
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 // partial file
-@import 'base';
-@import 'index';
-@import 'room';
-@import 'exit';
+@import "base";
+@import "index";
+@import "room";
+@import "exit";
+@import "my-page";
