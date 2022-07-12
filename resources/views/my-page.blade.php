@@ -15,7 +15,10 @@
             <tbody>
                 @foreach ($records as $record)
                     <tr>
-                        <th scope="row">{{ $record->updated_at }}</th>
+                        <th scope="row">
+                            <div class="date">{{ $record->updated_at->format("Y/m/d") }}</div>
+                            <div class="time">{{ $record->updated_at->format("H:i") }}</div>
+                        </th>
                         <td>{{ $record->total_minutes }}分</td>
                         <td>{{ $record->learning_content }}</td>
                     </tr>
