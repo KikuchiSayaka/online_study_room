@@ -29,11 +29,14 @@ class ExitController extends Controller
         $user->is_online = 0;
         $user->save();
 
-        $record = new Record;
-        $record->user_id = $user->id;
-        $record->learning_content = $user->learning_content;
-        $record->total_minutes = $user->total_minutes;
-        $record->save();
+        if($user-> total_minutes >0 ){
+            $record = new Record;
+            $record->user_id = $user->id;
+            $record->learning_content = $user->learning_content;
+            $record->total_minutes = $user->total_minutes;
+            $record->save();
+        }
+
 
         // return redirect()->route('exit');
     }
