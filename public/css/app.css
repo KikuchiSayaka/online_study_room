@@ -11488,6 +11488,18 @@ thead.main-bg-color th {
   background-color: #d7edf4;
 }
 
+tbody tr th {
+  width: 30%;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+tbody tr th .date {
+  display: inline-block;
+  margin: 0 2rem 0 0;
+}
+tbody tr th .time {
+  display: inline-block;
+}
 tbody tr:nth-of-type(2n) {
   background-color: #e1e9ea;
 }

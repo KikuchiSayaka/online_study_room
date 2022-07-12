@@ -11,6 +11,21 @@ thead.main-bg-color {
 }
 
 tbody {
+    tr {
+        th {
+            width: 30%;
+            font-size: 0.8rem;
+            font-weight: 500;
+
+            .date {
+                display: inline-block;
+                margin: 0 2rem 0 0;
+            }
+            .time {
+                display: inline-block;
+            }
+        }
+    }
     tr:nth-of-type(2n) {
         background-color: #e1e9ea;
     }
