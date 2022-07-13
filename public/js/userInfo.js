@@ -7,6 +7,7 @@
         "learning-content-output"
     );
     let yourInfoBtn = document.getElementById("your-info-btn");
+    let navDropdown = document.getElementById("navbarDropdown");
     let otherUserTimes = document.querySelectorAll(
         ".seat.other.seatChange .time"
     );
@@ -72,6 +73,7 @@
     yourInfoBtn.addEventListener("click", () => {
         yourNameOutput.innerHTML = yourName.value;
         learningContentOutput.innerHTML = learningContent.value;
+        navDropdown.innerHTML = yourName.value;
 
         // 入力ボタンを押した時に席次表だけでなく、データベースも一緒に更新
         let url = "/user/update";

@@ -15,8 +15,8 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('learning_content')->default('学習内容');
+            $table->string('name')->nullable();
+            $table->string('learning_content')->default('学習内容:なし')->nullable();
             $table->integer('total_minutes')->default(0);
             $table->string('email')->nullable()->unique();
             $table->timestamp('email_verified_at')->nullable();

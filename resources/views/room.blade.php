@@ -56,7 +56,7 @@
                         <div class="input-group flex-nowrap">
                             <input id="learning-content" type="text" class="form-control" placeholder="勉強内容" aria-label="勉強内容" aria-describedby="addon-wrapping">
                         </div>
-                        <input id="your-info-btn" class="btn side-button" type="button" value="入力">
+                        <input id="your-info-btn" class="btn side-button" type="button" value="変更">
                     </form>
                 </div>
                 <div class="side_bar_item  mt-sm-5 mt-4">
