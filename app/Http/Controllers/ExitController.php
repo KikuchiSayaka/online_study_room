@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Log;
@@ -12,7 +13,11 @@ class ExitController extends Controller
 {
     public function index()
     {
-        return view('exit');
+
+        $user = Auth::user();
+    \Log::info($user);
+        return view('exit')
+        ->with(compact('user'));
     }
 
     /**
