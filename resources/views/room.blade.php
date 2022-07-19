@@ -87,7 +87,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ユーザー名') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user()->name }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -101,7 +101,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Eメールアドレス') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -115,7 +115,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('パスワード') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" value="{{ Auth::user()->password }}">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -142,21 +142,6 @@
                         </div>
                     </form>
                 </div>
-
-            <!-- <div class="col-sm-6 m-auto mt-5">
-                <input type="text" class="form-control" placeholder="ユーザーネーム" aria-label="ユーザーネーム" aria-describedby="addon-wrapping">
-            </div>
-            <div class="col-sm-6 m-auto my-2">
-                <input type="text" class="form-control" placeholder="メールアドレス" aria-label="メールアドレス" aria-describedby="addon-wrapping">
-            </div>
-            <div class="col-sm-6 m-auto mt-4">
-                <input type="text" class="form-control" placeholder="パスワード" aria-label="パスワード" aria-describedby="addon-wrapping">
-            </div>
-            <div class="col-sm-6 m-auto my-2">
-                <input type="text" class="form-control" placeholder="確認のためもう一度パスワードを入力してください" aria-label="パスワード確認" aria-describedby="addon-wrapping">
-            </div>
-
-            <input class="btn register-button my-5" type="button" value="新規会員登録"> -->
         </div>
 @endsection
 
