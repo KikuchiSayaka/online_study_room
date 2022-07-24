@@ -80,7 +80,7 @@
             </p>
 
             <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('user.store') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -135,7 +135,7 @@
 
                         <div class="row mb-0">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary px-5 py-2 mt-3 mb-5">
+                                <button id="store-btn" type="button" class="btn btn-primary px-5 py-2 mt-3 mb-5">
                                     {{ __('登録') }}
                                 </button>
                             </div>

@@ -12,6 +12,10 @@
         ".seat.other.seatChange .time"
     );
     let mySeat = document.querySelector("#yourData");
+    let soreBtn = document.getElementById("store-btn");
+    let name = document.getElementById("name");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
 
     // 分換算を00:00表示に変更する処理の関数
     function ChangeDisplayTimeFunc(totalMinutes) {
@@ -69,7 +73,7 @@
         }
     }
 
-    // ユーザー名と学習内容を変更したい時のフォーム処理
+    // ユーザー名と学習内容を変更フォーム
     yourInfoBtn.addEventListener("click", () => {
         yourNameOutput.innerHTML = yourName.value;
         learningContentOutput.innerHTML = learningContent.value;
@@ -94,16 +98,32 @@
                 console.log(res);
             })
             .catch((err) => console.log(err));
+    });
 
-        // .then((response) => {
-        //     return response.json();
-        // })
-        // .then((data) => {
-        //     console.log(data);
-        // })
-        // .catch((err) => {
-        //     console.log(err);
-        // });
+    // ユーザー名とEメールアドレス、パスワードの変更フォーム
+    soreBtn.addEventListener("click", () => {
+        yourNameOutput.innerHTML = yourName.value;
+
+        // 会員登録のボタンを押した時にデータベースへ
+        let url = "/user/store";
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": document.querySelector('input[name="_token"]')
+                    .value,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: name.value,
+                email: email.value,
+                password: password.value,
+            }),
+        })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => console.log(err));
     });
 
     // ユーザーの総勉強時間を1分ごとにデータベースに格納する

@@ -28,8 +28,8 @@ Auth::routes();
 // });
 
 Route::get('/room', [App\Http\Controllers\UserController::class, 'index'])->name('room');
-
 Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+Route::post('/user/store', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
 
 Route::post('/user/learning-time-update', [App\Http\Controllers\LearningTimeController::class, 'update'])->name('learning-time-update.update');
 
