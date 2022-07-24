@@ -24,7 +24,7 @@
             </p>
 
             <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('user.store') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -79,28 +79,13 @@
 
                         <div class="row mb-0">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary px-5 py-2 mt-3 mb-5">
+                                <button id="store-btn" type="button" class="btn btn-primary px-5 py-2 mt-3 mb-5">
                                     {{ __('登録') }}
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
-
-            <!-- <div class="col-sm-6 m-auto mt-5">
-                <input type="text" class="form-control" placeholder="ユーザーネーム" aria-label="ユーザーネーム" aria-describedby="addon-wrapping">
-            </div>
-            <div class="col-sm-6 m-auto my-2">
-                <input type="text" class="form-control" placeholder="メールアドレス" aria-label="メールアドレス" aria-describedby="addon-wrapping">
-            </div>
-            <div class="col-sm-6 m-auto mt-4">
-                <input type="text" class="form-control" placeholder="パスワード" aria-label="パスワード" aria-describedby="addon-wrapping">
-            </div>
-            <div class="col-sm-6 m-auto my-2">
-                <input type="text" class="form-control" placeholder="確認のためもう一度パスワードを入力してください" aria-label="パスワード確認" aria-describedby="addon-wrapping">
-            </div>
-
-            <input class="btn register-button my-5" type="button" value="新規会員登録"> -->
         </div>
 
 
