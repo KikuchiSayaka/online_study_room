@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -34,7 +35,6 @@ class UserController extends Controller
     public function update(Request $request)
     {
         // Log::info($request->totalTime);
-
         $user = Auth::user();
         $user->name = $request->name;
         // userInfo.jsのJSONで、キーがcontentなので、$request->contentにしないといけない
@@ -48,30 +48,35 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // Log::info('押した');
+        // $request->validate([
+            // 'name' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:24', 'unique:users'],
+            // 'password' => ['required', 'string', 'min:12', 'confirmed'],
+        // ],[
+        //     'name' => 'その名前は既に使われています。(最大12文字まで可)',
+        //     'email' => ':max 文字以下のメールアドレスを入力してください。',
+        //     'password' => '英数字12文字以上のパスワードを設定してください。',
+        // ]);
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:24', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+            ->withInput()
+            ->withErrors($validator);
+        }
 
         $user = Auth::user();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
+        $user->name = $request ->name;
+        $user->email = $request ->email;
+        $user->password = $request ->password;
 
         $user->save();
 
-        return response() ->json(compact('user'));
+        return response()->json(compact('user'));
     }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:12', 'confirmed'],
-        ]);
-    }
-
 }
