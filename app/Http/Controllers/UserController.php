@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -45,30 +45,9 @@ class UserController extends Controller
         // view('room');
     }
 
-    public function store(Request $request)
+    public function store(UserUpdateRequest $request)
     {
         // Log::info('押した');
-        // $request->validate([
-            // 'name' => ['required', 'string', 'max:255'],
-            // 'email' => ['required', 'string', 'email', 'max:24', 'unique:users'],
-            // 'password' => ['required', 'string', 'min:12', 'confirmed'],
-        // ],[
-        //     'name' => 'その名前は既に使われています。(最大12文字まで可)',
-        //     'email' => ':max 文字以下のメールアドレスを入力してください。',
-        //     'password' => '英数字12文字以上のパスワードを設定してください。',
-        // ]);
-
-        $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:24', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-            ->withInput()
-            ->withErrors($validator);
-        }
 
         $user = Auth::user();
         $user->name = $request ->name;
