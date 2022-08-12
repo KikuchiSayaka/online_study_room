@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\CreateAccountRequest;
+use App\Http\Requests\ChangeNameRequest;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -28,11 +30,16 @@ class UserController extends Controller
 
         // Log::info($users);
 
+        $user = Auth::user();
+        $email = $user->email;
+        Log::info($email);
+
         return view('room')
-        ->with(compact('users', 'vacancies'));
+        ->with(compact('users', 'vacancies', 'email'));
     }
 
-    public function update(Request $request)
+    // ユーザ名と学習内容を変更するだけのフォーム
+    public function update(ChangeNameRequest $request)
     {
         // Log::info($request->totalTime);
         $user = Auth::user();
@@ -42,13 +49,11 @@ class UserController extends Controller
         $user->save();
 
         return response() ->json(compact('user'));
-        // view('room');
     }
 
-    public function store(UserUpdateRequest $request)
+    // 新規会員登録(初めてメアドと、パスワードを登録する)フォーム
+    public function store(CreateAccountRequest $request)
     {
-
-
         $user = Auth::user();
         $user->name = $request ->name;
         // \Log::info($request->name);

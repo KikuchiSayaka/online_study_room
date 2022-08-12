@@ -15,9 +15,11 @@ class ExitController extends Controller
     {
 
         $user = Auth::user();
-    \Log::info($user);
+        $email = $user->email;
+        // Log::info($email);
+    // \Log::info($user);
         return view('exit')
-        ->with(compact('user'));
+        ->with(compact('user', 'email'));
     }
 
     /**
