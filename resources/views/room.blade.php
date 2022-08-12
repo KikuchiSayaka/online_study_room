@@ -7,7 +7,6 @@
 @endsection
 
 @section('content')
-
         <div class="container d-sm-flex justify-content-center my-sm-5 my-3">
             <div class="room-list border-flame px-sm-5 px-2 py-5">
                 <div class="d-flex justify-content-around">
@@ -46,15 +45,15 @@
             </div>
             <div class="side_bar col-sm-3 ms-sm-3">
                 <div class="side_bar_item  mt-sm-5 mt-4">
-                    <p class="">入力するとあなたの席に反映されます。同じお部屋の人にも見えるので、トラブル防止のため、個人情報は入力しないようにしましょう。</p>
+                    <p class="">入力するとあなたの席に反映されます。同じお部屋の人にも見えるので、トラブル防止のため個人情報は入力しないようにしましょう。</p>
 
                     <form method="POST" action="{{ route('user.update') }}">
                         @csrf
                         <div class="input-group flex-nowrap my-2">
-                            <input id="your-name" type="text" class="form-control" placeholder="あなたのユーザー名" aria-label="あなたのユーザー名" aria-describedby="addon-wrapping">
+                            <input id="your-name" type="text" class="form-control" placeholder="新しいユーザー名(最大10文字)" aria-label="新しいユーザー名(最大10文字)" aria-describedby="addon-wrapping">
                         </div>
                         <div class="input-group flex-nowrap">
-                            <input id="learning-content" type="text" class="form-control" placeholder="勉強内容" aria-label="勉強内容" aria-describedby="addon-wrapping">
+                            <input id="learning-content" type="text" class="form-control" placeholder="勉強内容(最大10文字)" aria-label="勉強内容(最大10文字)" aria-describedby="addon-wrapping">
                         </div>
                         <input id="your-info-btn" class="btn side-button" type="button" value="変更">
                     </form>
@@ -73,76 +72,78 @@
                 </div>
             </div>
         </div>
-        <div class="container border-flame w-9 py-sm-5 py-3 my-5">
-            <h3 class="text-center">新規会員登録</h3>
-            <p class="text-center">
-            会員登録をしていただくと、 勉強した時間の記録を残すことができます。
-            </p>
+        @if(empty($email))
+            <div class="container border-flame w-9 py-sm-5 py-3 my-5">
+                <h3 class="text-center mb-3">新規会員登録</h3>
+                <p class="text-center">
+                    会員登録をしていただくと、 勉強した時間の記録を残すことができます。
+                </p>
 
-            <div class="card-body">
-                    <form method="POST" action="{{ route('user.store') }}">
-                        @csrf
+                <div class="card-body">
+                            <form method="POST" action="{{ route('user.store') }}">
+                                @csrf
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ユーザー名') }}</label>
+                                <div class="row mb-3">
+                                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ユーザー名') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user()->name }}" required autocomplete="name" autofocus>
+                                    <div class="col-md-6">
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Eメールアドレス') }}</label>
+                                <div class="row mb-3">
+                                    <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Eメールアドレス') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" required autocomplete="email">
+                                    <div class="col-md-6">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('パスワード') }}</label>
+                                <div class="row mb-3">
+                                    <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('パスワード') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" value="{{ Auth::user()->password }}">
+                                    <div class="col-md-6">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" value="{{ old('password') }}">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
 
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('もう一度パスワードを入力') }}</label>
+                                <div class="row mb-3">
+                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('もう一度パスワードを入力') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
+                                    <div class="col-md-6">
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" value="{{ old('password_confirmation') }}">
+                                    </div>
+                                </div>
 
-                        <div class="row mb-0">
-                            <div class="text-center">
-                                <button id="store-btn" type="button" class="btn btn-primary px-5 py-2 mt-3 mb-5">
-                                    {{ __('登録') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-        </div>
+                                <div class="row mb-0">
+                                    <div class="text-center">
+                                        <button id="store-btn" type="button" class="btn btn-primary px-5 py-2 mt-3 mb-5">
+                                            {{ __('登録') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+            </div>
+        @endif
 @endsection
 
 

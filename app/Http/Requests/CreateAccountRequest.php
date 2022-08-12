@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Requests;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Log;
 // これがないとfetchでform requestした時にバリデーションエラーが出ない
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 
-class UserUpdateRequest extends FormRequest
+class CreateAccountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,12 +30,11 @@ class UserUpdateRequest extends FormRequest
     {
 
         return [
-            'name' => ['string', 'max:10'],
-            'email' => ['string', 'email', 'max:24', 'unique:users'],
-            'password' => ['string', 'min:12'],
+            'name' => ['required','string', 'max:10'],
+            'email' => ['required', 'string', 'email', 'max:24', 'unique:users'],
+            'password' => ['required', 'string', 'min:12'],
         ];
     }
-
     protected function failedValidation(Validator $validator)
     {
         $res = response()->json([
