@@ -16,6 +16,7 @@
     let name = document.getElementById("name");
     let email = document.getElementById("email");
     let password = document.getElementById("password");
+    let passwordConfirm = document.getElementById("password-confirm");
 
     // 分換算を00:00表示に変更する処理の関数
     function ChangeDisplayTimeFunc(totalMinutes) {
@@ -106,7 +107,7 @@
 
         // 会員登録のボタンを押した時にデータベースへ
         let url = "/user/store";
-
+        console.log(url);
         fetch(url, {
             method: "POST",
             headers: {
@@ -118,12 +119,13 @@
                 name: name.value,
                 email: email.value,
                 password: password.value,
+                password_confirmation: passwordConfirm.value,
             }),
         })
             .then((res) => {
                 console.log(res);
             })
-            .catch((err) => console.log(err));
+            .catch((error) => console.error("失敗", error));
     });
 
     // ユーザーの総勉強時間を1分ごとにデータベースに格納する

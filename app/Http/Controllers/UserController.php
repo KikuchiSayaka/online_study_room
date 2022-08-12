@@ -6,7 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UserUpdateRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -34,7 +35,6 @@ class UserController extends Controller
     public function update(Request $request)
     {
         // Log::info($request->totalTime);
-
         $user = Auth::user();
         $user->name = $request->name;
         // userInfo.jsのJSONで、キーがcontentなので、$request->contentにしないといけない
@@ -45,33 +45,18 @@ class UserController extends Controller
         // view('room');
     }
 
-    public function store(Request $request)
+    public function store(UserUpdateRequest $request)
     {
-        // Log::info('押した');
+
 
         $user = Auth::user();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
+        $user->name = $request ->name;
+        // \Log::info($request->name);
+        $user->email = $request ->email;
+        $user->password = Hash::make($request ->password);
 
         $user->save();
 
-        return response() ->json(compact('user'));
+        return response()->json(compact('user'));
     }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:12', 'confirmed'],
-        ]);
-    }
-
 }
