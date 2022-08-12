@@ -47,12 +47,13 @@ class UserController extends Controller
 
     public function store(UserUpdateRequest $request)
     {
-        // Log::info('押した');
+
 
         $user = Auth::user();
         $user->name = $request ->name;
+        // \Log::info($request->name);
         $user->email = $request ->email;
-        $user->password = $request ->password;
+        $user->password = Hash::make($request ->password);
 
         $user->save();
 
