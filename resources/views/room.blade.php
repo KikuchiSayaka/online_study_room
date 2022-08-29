@@ -73,21 +73,22 @@
             </div>
         </div>
         @if(empty($email))
-            <div class="container border-flame w-9 py-sm-5 py-3 my-5">
+            <div id="create-account-form" class="container border-flame w-9 py-sm-5 py-3 my-5">
                 <h3 class="text-center mb-3">新規会員登録</h3>
                 <p class="text-center">
                     会員登録をしていただくと、 勉強した時間の記録を残すことができます。
                 </p>
 
                 <div class="card-body">
+                            <div id="error-message"></div>
                             <form method="POST" action="{{ route('user.store') }}">
                                 @csrf
 
                                 <div class="row mb-3">
-                                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ユーザー名') }}</label>
+                                    <label for="name" class="required col-md-4 col-form-label text-md-end">{{ __('ユーザー名(最大10文字)') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="山田花子(最大10文字)">
 
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -98,10 +99,10 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Eメールアドレス') }}</label>
+                                    <label for="email" class="required col-md-4 col-form-label text-md-end">{{ __('Eメールアドレス') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="example@mail.com">
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -112,10 +113,10 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('パスワード') }}</label>
+                                    <label for="password" class="required col-md-4 col-form-label text-md-end">{{ __('パスワード(英数字12文字以上)') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" value="{{ old('password') }}">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" value="{{ old('password') }}" placeholder="パスワード(英数字12文字以上)">
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -126,10 +127,10 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('もう一度パスワードを入力') }}</label>
+                                    <label for="password-confirm" class="required col-md-4 col-form-label text-md-end">{{ __('もう一度パスワードを入力') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" value="{{ old('password_confirmation') }}">
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" value="{{ old('password_confirmation') }}" placeholder="確認パスワード(英数字12文字以上)">
                                     </div>
                                 </div>
 
@@ -143,6 +144,27 @@
                             </form>
                     </div>
             </div>
+                <div class="modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">仮登録が完了しました</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>入力いただいたメールアドレスへ、仮登録確認のメールをお送りしました。<br>
+                                メール内にある確認リンクを押して、会員登録を完了してください。
+                            </p>
+                            <p>メールが届いていない方は、<a href="#">こちら</a>より運営へお問い合わせください</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
         @endif
 @endsection
 

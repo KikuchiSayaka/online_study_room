@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
-class UserUpdateRequest extends FormRequest
+class NameChangeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,6 @@ class UserUpdateRequest extends FormRequest
      * Get the validation rules that apply to the request.
      *
      * @return array
-     * 必須だと'required',
      *, 2度入力したパスワードが一致するか？'confirmed'
      */
     public function rules()
@@ -31,8 +30,6 @@ class UserUpdateRequest extends FormRequest
 
         return [
             'name' => ['string', 'max:10'],
-            'email' => ['string', 'email', 'max:24', 'unique:users'],
-            'password' => ['string', 'min:12'],
         ];
     }
 
@@ -45,3 +42,4 @@ class UserUpdateRequest extends FormRequest
         throw new HttpResponseException($res);
     }
 }
+

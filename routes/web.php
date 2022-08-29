@@ -16,16 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/', [App\Http\Controllers\HeaderController::class, 'index'])->name('layouts.header');
 
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/layout', [App\Http\Controllers\LayoutController::class, 'index'])->name('layouts.index');
-
-// Route::get('/room', function () {
-//     return view('room');
-// });
 
 Route::get('/room', [App\Http\Controllers\UserController::class, 'index'])->name('room');
 Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
@@ -42,6 +34,6 @@ Route::get('/room/other-list', [App\Http\Controllers\OtherUserListController::cl
 
 Route::get('/my-page', [App\Http\Controllers\RecordController::class, 'index'])->name('my-page');
 
-// Route::get('/exit', function () {
-//     return view('exit');
-// })->name('exit');
+Route::post('/user/name-change', [App\Http\Controllers\UserController::class, 'nameChange'])->name('user.name-change');
+Route::post('/user/email-change', [App\Http\Controllers\UserController::class, 'emailChange'])->name('user.email-change');
+Route::post('/user/password-change', [App\Http\Controllers\UserController::class, 'passwordChange'])->name('user.password-change');

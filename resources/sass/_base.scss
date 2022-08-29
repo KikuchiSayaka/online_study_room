@@ -38,3 +38,21 @@ footer {
     background-color: #fff;
     transform: scale(0.9);
 }
+
+.required:after {
+    content: "必須";
+    font-size: 12px;
+    margin: 14px;
+    background-color: #e13535;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+div#error-message ul {
+    width: 60%;
+    margin: 0 auto 1rem;
+    text-align: center;
+    color: #ab1212;
+}

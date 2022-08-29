@@ -12,13 +12,15 @@
         ".seat.other.seatChange .time"
     );
     let mySeat = document.querySelector("#yourData");
-    let soreBtn = document.getElementById("store-btn");
     let name = document.getElementById("name");
     let email = document.getElementById("email");
     let password = document.getElementById("password");
     let passwordConfirm = document.getElementById("password-confirm");
+    let soreBtn = document.getElementById("store-btn");
 
+    // =======================================================================
     // 分換算を00:00表示に変更する処理の関数
+    // =======================================================================
     function ChangeDisplayTimeFunc(totalMinutes) {
         let hour = String(Math.floor(totalMinutes / 60)).padStart(2, "0");
         let minute = String(totalMinutes - hour * 60).padStart(2, "0");
@@ -27,7 +29,9 @@
         return displayTime;
     }
 
-    // 他のユーザの描画処理の関数
+    // =======================================================================
+    // 席次表の他のユーザの描画処理の関数
+    // =======================================================================
     function otherUserUpdate(users) {
         // usersの配列をusers定数に入れる。is_online===1のユーザだけの配列
         // const users = data.users;
@@ -74,7 +78,9 @@
         }
     }
 
-    // ユーザー名と学習内容を変更フォーム
+    // =======================================================================
+    // ユーザー名と学習内容だけを変更するフォーム
+    // =======================================================================
     yourInfoBtn.addEventListener("click", () => {
         yourNameOutput.innerHTML = yourName.value;
         learningContentOutput.innerHTML = learningContent.value;
@@ -101,9 +107,12 @@
             .catch((err) => console.log(err));
     });
 
-    // ユーザー名とEメールアドレス、パスワードの変更フォーム
-    soreBtn.addEventListener("click", () => {
-        yourNameOutput.innerHTML = yourName.value;
+    // =======================================================================
+    // 新規会員登録フォーム(ユーザー名とEメールアドレス、パスワード)
+    // =======================================================================
+    soreBtn?.addEventListener("click", () => {
+        yourNameOutput.innerHTML = name.value;
+        navDropdown.innerHTML = name.value;
 
         // 会員登録のボタンを押した時にデータベースへ
         let url = "/user/store";
@@ -123,12 +132,30 @@
             }),
         })
             .then((res) => {
-                console.log(res);
+                console.log(res.status);
+                return res.json();
+            })
+            .then((result) => {
+                if (result.errors) {
+                    console.log(result);
+                    let errorMessage = document.getElementById("error-message");
+
+                    errorMessage.innerHTML = `
+                    <ul>
+                        <li>${result.errors.name || ""}</li>
+                        <li>${result.errors.email || ""}</li>
+                        <li>${result.errors.password || ""}</li>
+                        <li>${result.errors.password_confirmation || ""}</li>
+                    </ul>
+                    `;
+                }
             })
             .catch((error) => console.error("失敗", error));
     });
 
+    // =======================================================================
     // ユーザーの総勉強時間を1分ごとにデータベースに格納する
+    // =======================================================================
     let updateTime = setInterval(updateTotalTime, 60000);
 
     function updateTotalTime() {
@@ -158,7 +185,9 @@
             .catch((err) => console.log(err));
     }
 
-    // 初めて画面を開いた時、DBから取得した他のオンラインユーザの勉強時間をの表示を分換算から00:00に加工
+    // =======================================================================
+    // 初めて画面を開いた時、DBから取得した他のオンラインユーザの勉強時間の表示を分換算から00:00表示に加工
+    // =======================================================================
     window.addEventListener("load", firstOpenOtherTimefunc());
 
     function firstOpenOtherTimefunc() {
@@ -173,7 +202,9 @@
         });
     }
 
+    // =======================================================================
     // 30分おきにオンラインの他ユーザを入れ替えて席次表を更新
+    // =======================================================================
     let updateOtherUserList = setInterval(OtherUserList, 1800000);
 
     function OtherUserList() {
@@ -200,7 +231,9 @@
             });
     }
 
-    // ウインドウを閉じたユーザのusersテーブルのis_online=0に、学習記録をrecordテーブルに登録
+    // =======================================================================
+    // ウインドウを閉じたユーザのusersテーブルのis_onlineを0にして学習記録をrecordテーブルに登録
+    // =======================================================================
     window.addEventListener("beforeunload", (event) => {
         let url = "/user/record";
 

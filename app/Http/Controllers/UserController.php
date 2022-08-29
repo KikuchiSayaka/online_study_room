@@ -6,7 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Log;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\NameChangeRequest;
+use App\Http\Requests\EmailChangeRequest;
+use App\Http\Requests\PasswordChangeRequest;
 use App\Http\Requests\CreateAccountRequest;
 use App\Http\Requests\ChangeNameRequest;
 use Illuminate\Support\Facades\Hash;
@@ -38,7 +40,7 @@ class UserController extends Controller
         ->with(compact('users', 'vacancies', 'email'));
     }
 
-    // ユーザ名と学習内容を変更するだけのフォーム
+// ユーザ名と学習内容を変更するだけのフォーム
     public function update(ChangeNameRequest $request)
     {
         // Log::info($request->totalTime);
@@ -51,13 +53,52 @@ class UserController extends Controller
         return response() ->json(compact('user'));
     }
 
-    // 新規会員登録(初めてメアドと、パスワードを登録する)フォーム
+// 新規会員登録(初めてメアドと、パスワードを登録する)フォーム
     public function store(CreateAccountRequest $request)
     {
         $user = Auth::user();
         $user->name = $request ->name;
         // \Log::info($request->name);
         $user->email = $request ->email;
+        $user->password = Hash::make($request ->password);
+
+        $user->save();
+
+        return response()->json(compact('user'));
+    }
+
+// ユーザ名変更フォーム
+    public function nameChange(NameChangeRequest $request)
+    {
+        Log::info($request);
+
+        $user = Auth::user();
+        $user->name = $request ->name;
+
+        $user->save();
+
+        return response()->json(compact('user'));
+    }
+
+// email変更フォーム
+    public function emailChange(EmailChangeRequest $request)
+    {
+        Log::info($request);
+
+        $user = Auth::user();
+        $user->email = $request ->email;
+
+        $user->save();
+
+        return response()->json(compact('user'));
+    }
+
+// パスワード変更フォーム
+    public function passwordChange(PasswordChangeRequest $request)
+    {
+        Log::info($request);
+
+        $user = Auth::user();
         $user->password = Hash::make($request ->password);
 
         $user->save();
