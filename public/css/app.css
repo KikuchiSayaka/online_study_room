@@ -11325,6 +11325,24 @@ footer {
   transform: scale(0.9);
 }
 
+.required:after {
+  content: "必須";
+  font-size: 12px;
+  margin: 14px;
+  background-color: #e13535;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+div#error-message ul {
+  width: 60%;
+  margin: 0 auto 1rem;
+  text-align: center;
+  color: #ab1212;
+}
+
 .top-cover {
   background-color: #D6D6D6;
   height: 31rem;
@@ -11502,4 +11520,36 @@ tbody tr th .time {
 }
 tbody tr:nth-of-type(2n) {
   background-color: #e1e9ea;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.modal .modal-dialog {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.2);
+}
+.modal .modal-dialog .modal-header {
+  padding: 0.5rem 1rem;
+  border: none;
+}
+.modal .modal-dialog .modal-header button.close {
+  border: none;
+  background: transparent;
+  font-size: 2rem;
+  position: relative;
+  top: -1rem;
+  right: -2rem;
+  padding: 2rem;
+  line-height: 0;
+}
+.modal .modal-dialog .modal-title {
+  margin: auto;
+}
+.modal .modal-dialog .modal-footer {
+  border: none;
 }
