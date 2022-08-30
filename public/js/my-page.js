@@ -54,6 +54,15 @@
                             }</li>
                         </ul>
                     `;
+                } else {
+                    let createAccountForm = document.getElementById(
+                        "create-account-form"
+                    );
+                    let registrationCompleted = document.getElementById(
+                        "registration-completed"
+                    );
+                    createAccountForm.remove();
+                    registrationCompleted.style.display = "block";
                 }
             })
             .catch((error) => console.error("失敗", error));
