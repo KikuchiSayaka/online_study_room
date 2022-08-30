@@ -4,6 +4,10 @@ ul {
     padding: 0;
 }
 
+.fz-7 {
+    font-size: 0.8rem;
+}
+
 .btn {
     color: #fff;
     background-color: #1fabd5;
@@ -27,6 +31,11 @@ footer {
 .border-flame {
     border: 1px solid #d1d1d1;
     border-radius: 12px;
+}
+
+.wrap {
+    max-width: 32rem;
+    margin: auto;
 }
 
 .w-9 {
@@ -55,4 +64,8 @@ div#error-message ul {
     margin: 0 auto 1rem;
     text-align: center;
     color: #ab1212;
+}
+
+div#registration-completed {
+    display: none;
 }
