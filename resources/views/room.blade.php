@@ -144,27 +144,15 @@
                             </form>
                     </div>
             </div>
-                <div class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">仮登録が完了しました</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>入力いただいたメールアドレスへ、仮登録確認のメールをお送りしました。<br>
-                                メール内にある確認リンクを押して、会員登録を完了してください。
-                            </p>
-                            <p>メールが届いていない方は、<a href="#">こちら</a>より運営へお問い合わせください</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                        </div>
-                        </div>
-                    </div>
+            <div id="registration-completed" class="container border-flame w-9 py-sm-5 py-5 my-5">
+                <div class="wrap">
+                    <h3 class="mb-4 text-center">仮登録が完了しました</h3>
+                    <p class="mb-2">入力いただいたメールアドレスへ仮登録確認のメールをお送りしました。</p>
+                    <p class="mb-5">メール内にある確認リンクを押して、会員登録を完了してください。</p>
+                    <p class="mb-5">メールが届いていない方は、<a href="#">こちら</a>より運営へお問い合わせください。</p>
+                    <p class="fz-7">※ ご登録いただいた情報の変更はヘッダーメニューのマイページより変更いただけます。</p>
                 </div>
+            </div>
         @endif
 @endsection
 
