@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/room', [App\Http\Controllers\UserController::class, 'index'])->name('room');
 Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
