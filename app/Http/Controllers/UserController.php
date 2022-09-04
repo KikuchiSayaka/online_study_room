@@ -12,6 +12,7 @@ use App\Http\Requests\PasswordChangeRequest;
 use App\Http\Requests\CreateAccountRequest;
 use App\Http\Requests\ChangeNameRequest;
 use Illuminate\Support\Facades\Hash;
+use Mail;
 
 class UserController extends Controller
 {
@@ -64,6 +65,9 @@ class UserController extends Controller
 
         $user->save();
 
+        // メール認証
+        Auth::user()->sendEmailVerificationNotification();
+
         return response()->json(compact('user'));
     }
 
@@ -89,6 +93,9 @@ class UserController extends Controller
         $user->email = $request ->email;
 
         $user->save();
+
+        // メール認証
+        Auth::user()->sendEmailVerificationNotification();
 
         return response()->json(compact('user'));
     }
