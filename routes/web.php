@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/mail-auth', function () {
+    return view('auth.mailAuth');
+});
+
 Auth::routes(['verify' => true]);
 
 Route::get('/room', [App\Http\Controllers\UserController::class, 'index'])->name('room');
@@ -37,3 +41,4 @@ Route::get('/my-page', [App\Http\Controllers\RecordController::class, 'index'])-
 Route::post('/user/name-change', [App\Http\Controllers\UserController::class, 'nameChange'])->name('user.name-change');
 Route::post('/user/email-change', [App\Http\Controllers\UserController::class, 'emailChange'])->name('user.email-change');
 Route::post('/user/password-change', [App\Http\Controllers\UserController::class, 'passwordChange'])->name('user.password-change');
+

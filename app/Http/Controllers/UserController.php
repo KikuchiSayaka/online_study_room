@@ -112,4 +112,9 @@ class UserController extends Controller
 
         return response()->json(compact('user'));
     }
+
+    // public function mailAuth()
+    // {
+    //     return view('auth.mailAuth');
+    // }
 }
