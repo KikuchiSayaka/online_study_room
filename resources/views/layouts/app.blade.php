@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'オンライン自習室') }}</title>
 
+    @yield('ogp')
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -84,5 +86,6 @@
             <small>© 2022 Sayaka Kikuchi All rights reserved.</small>
         </footer>
     </div>
+@yield('javascript')
 </body>
 </html>
