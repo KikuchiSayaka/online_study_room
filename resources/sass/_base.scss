@@ -50,11 +50,11 @@ footer {
 
 .required:after {
     content: "必須";
-    font-size: 12px;
-    margin: 14px;
+    font-size: 0.7rem;
+    margin: 0 .5rem;
     background-color: #e13535;
     color: #fff;
-    padding: 6px 12px;
+    padding: .3rem .5rem;
     border-radius: 4px;
     font-weight: bold;
 }
@@ -68,4 +68,9 @@ div#error-message ul {
 
 div#registration-completed {
     display: none;
+}
+
+span.rule {
+    font-size: 0.8rem;
+    margin: 0 0 0 .5rem;
 }
