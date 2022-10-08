@@ -180,8 +180,8 @@
 
         let link = document.createElement("a");
         link.href = window.URL.createObjectURL(blob);
-        // link.download = download_file_name;
-        // link.click();
+        link.download = download_file_name;
+        link.click();
     }
     </script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
