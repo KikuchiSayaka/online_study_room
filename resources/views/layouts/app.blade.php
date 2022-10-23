@@ -92,7 +92,7 @@
 
             @yield('content')
         <footer class="text-center">
-            <small>© 2022 Sayaka Kikuchi All rights reserved.</small>
+            <small>© 2022 Online Study Room All rights reserved.</small>
         </footer>
     </div>
 @yield('javascript')
