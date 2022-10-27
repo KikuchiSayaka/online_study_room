@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+| 学習終了 | オンライン自習室
+@endsection
+
 @section('ogp')
     <head prefix="og: https://ogp.me/ns#">
     <meta property="og:url" content="http://127.0.0.1:8000" />

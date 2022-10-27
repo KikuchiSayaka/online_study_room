@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+| 席次表・タイマー画面 | オンライン自習室
+@endsection
+
 @section('js')
     <script src="{{ asset('js/timer.js') }}" defer></script>
     <script src="{{ asset('js/userInfo.js') }}" defer></script>
