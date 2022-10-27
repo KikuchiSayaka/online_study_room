@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+| マイページ・学習記録一覧 | オンライン自習室
+@endsection
+
 @section('js')
     <script src="{{ asset('js/my-page.js') }}" defer></script>
 @endsection
