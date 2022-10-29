@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-        <div class="container d-sm-flex justify-content-center my-sm-5 my-3">
+        <div class="first-contents container d-sm-flex justify-content-center my-sm-4 my-3">
             <div class="room-list border-flame px-sm-5 px-2 py-5">
                 <div class="d-flex justify-content-around">
                     <dl class="total-time">

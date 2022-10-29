@@ -21,36 +21,37 @@
 @endsection
 
 @section('content')
-    <div class="container border-flame w-9 py-sm-5 py-3 my-5 panel-bg">
-        <h2 class="fs-4 text-center mb-3">勉強お疲れ様でした。</h2>
+    <div class="first-contents">
+        <div class="container border-flame w-9 py-sm-5 py-3 my-4">
+            <h2 class="fs-4 text-center mb-3">勉強お疲れ様でした。</h2>
 
-        <canvas id="canvas" width="300px" height="200px" class="border-flame w-sm-50 m-auto bg-white exit-board" style="display: flex; justify-content: center;"></canvas>
+            <canvas id="canvas" width="300px" height="200px" class="border-flame w-sm-50 m-auto bg-white exit-board" style="display: flex; justify-content: center;"></canvas>
 
-        <!-- <div class="border-flame w-sm-50 m-auto bg-white exit-board">
-                <dl class="total-time text-center mt-3">
-                    <dt>総勉強時間</dt>
-                    <dd>{{ $user->total_minutes }}分</dd>
-                </dl>
-                <h3 class="text-center fs-4">勉強内容</h3>
-                <div class="m-auto w-25 text-center mb-5">
-                    <p class="m-0">{{ $user->learning_content }}</p>
-                </div>
-        </div> -->
-        <p class="text-center mt-4">勉強した記録にツイートしてみませんか？</p>
-        <!-- <a href="＃" alt="Twitterに投稿" type="button" class="btn join-btn my-3">Twitterに投稿</a> -->
+            <!-- <div class="border-flame w-sm-50 m-auto bg-white exit-board">
+                    <dl class="total-time text-center mt-3">
+                        <dt>総勉強時間</dt>
+                        <dd>{{ $user->total_minutes }}分</dd>
+                    </dl>
+                    <h3 class="text-center fs-4">勉強内容</h3>
+                    <div class="m-auto w-25 text-center mb-5">
+                        <p class="m-0">{{ $user->learning_content }}</p>
+                    </div>
+            </div> -->
+            <p class="text-center mt-4">勉強した記録にツイートしてみませんか？</p>
+            <!-- <a href="＃" alt="Twitterに投稿" type="button" class="btn join-btn my-3">Twitterに投稿</a> -->
 
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw&amp;text=※※ぜひ先ほどダウンロードされた画像を添付してツイートしてください※※%0a%0aオンライン自習室で、先ほどまで{{ $user->total_minutes }}分 勉強しました。%0a%0a勉強内容：{{ $user->learning_content }}%0a%0a%23勉強垢%0a%23今日の積み上げ%0a%23勉強%0a%23勉強垢さんと頑張りたい%0a%23自習室%0a登録なしですぐ始められる%7C%7Cオンライン自習室%7C%7C" class="btn join-btn my-3"
-            onclick="CanvasDataDownload();"
-            data-text="オンライン自習室で、先ほどまで{{ $user->total_minutes }}分 勉強しました。%0a%0a勉強内容：{{ $user->learning_content }}"
-            data-hashtags="勉強垢勉強垢,今日の積み上げ,勉強,勉強垢さんと頑張りたい,自習室"
-            data-show-count="false"
-            target="_blank"
-            rel="nofollow"
-        >
-            Twitterに投稿
-        </a>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw&amp;text=※※ぜひ先ほどダウンロードされた画像を添付してツイートしてください※※%0a%0aオンライン自習室で、先ほどまで{{ $user->total_minutes }}分 勉強しました。%0a%0a勉強内容：{{ $user->learning_content }}%0a%0a%23勉強垢%0a%23今日の積み上げ%0a%23勉強%0a%23勉強垢さんと頑張りたい%0a%23自習室%0a登録なしですぐ始められる%7C%7Cオンライン自習室%7C%7C" class="btn join-btn my-3"
+                onclick="CanvasDataDownload();"
+                data-text="オンライン自習室で、先ほどまで{{ $user->total_minutes }}分 勉強しました。%0a%0a勉強内容：{{ $user->learning_content }}"
+                data-hashtags="勉強垢勉強垢,今日の積み上げ,勉強,勉強垢さんと頑張りたい,自習室"
+                data-show-count="false"
+                target="_blank"
+                rel="nofollow"
+            >
+                Twitterに投稿
+            </a>
+        </div>
     </div>
-
     @if(empty($email))
         <div id="create-account-form" class="container border-flame w-9 py-sm-5 py-3 my-5">
             <h3 class="text-center mb-3">新規会員登録</h3>
