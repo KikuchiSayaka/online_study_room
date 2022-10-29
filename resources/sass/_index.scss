@@ -1,10 +1,20 @@
 .top-cover {
-    background-color: #D6D6D6;
-    height: 31rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    height: 37rem;
+    @media (min-width: 769px) {
+        height: 28rem;
+    }
+}
+
+.right {
+    padding: 3rem 1rem 0;
+    @media (min-width: 769px) {
+        width: 40%;
+        margin: 4rem 2rem 0 0;
+        padding: 0;
+    }
+    p {
+        line-height: 1.7;
+    }
 }
 
 .btn.join-btn {
@@ -14,5 +24,74 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 4rem auto;
+    margin: 2rem auto;
+    @media (min-width: 769px) {
+        margin: 2rem auto 6rem;
+    }
+}
+
+.left {
+    position: relative;
+    top: -1.5rem;
+    // left: 6rem;
+    text-align: center;
+    z-index: 500;
+    @media (min-width: 769px) {
+        bottom: -3rem;
+        width: 50%;
+        z-index: 500;
+    }
+    img {
+        width: 70%;
+        overflow: hidden;
+        @media (min-width: 769px) {
+            width: 80%;
+        }
+    }
+}
+
+
+.grid4 {
+    @media (min-width: 769px) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        // column-gap: 5rem;
+        // row-gap: 2rem;
+        margin: 3rem auto 5rem;
+    }
+    .grid-item {
+        // margin-bottom: 8rem;
+        margin: 0 auto 8rem;
+        background-color: #fff;
+        border: 1px solid #ececec77;
+        border-radius: 8px;
+        padding: 1rem;
+        width: 14rem;
+        box-shadow: 0 2.5rem 2rem -2rem hsl(200deg 45% 24% / 40%);
+        p {
+            max-width: 13rem;
+            margin: auto;
+        }
+    }
+}
+
+.grid-item::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px;
+    border-color: #222329 transparent transparent transparent;
+    z-index: 500;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 58px 0 0 0;
+    @media (min-width: 769px){
+        display: none;
+    }
+}
+
+.grid-item:last-child::after {
+    display: none;
 }

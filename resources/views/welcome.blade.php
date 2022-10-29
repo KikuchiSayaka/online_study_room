@@ -22,15 +22,77 @@
 
 @section('content')
 
-        <div class="top-cover">
+        <div class="first-content top-cover text-white main-bg-color first-contents">
             <div class="container">
-                <h2 class="text-center pt-5 mt-5 mb-1">登録なしですぐ始められるオンライン自習室</h2>
-                <p class="text-center m-3 fs-5">ボタンを押すとすぐに勉強が始められます。</p>
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
-                    <button class="btn join-btn">入室</button>
-                </form>
+                <div class="d-md-flex align-items-center m-auto justify-content-center">
+                    <div class="right">
+                        <h2 class="mb-1 fs-2 fw-bolder">
+                            登録なしですぐ始められる</br>
+                            <span class="fs-1 mt-1">オンライン自習室</span>
+                        </h2>
+                        <p class="mt-3 fs-md-5">
+                            入室ボタンを押すと、すぐにポモドーロタイマー付き自習室で勉強が始められます。
+                            </br>
+                            面倒なアカウント登録はありません。
+                        </p>
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
+                            <button class="btn join-btn">入室</button>
+                        </form>
+                    </div>
+                    <div class="left">
+                        <img src="{{ asset('assets/main_visual.png') }}" alt="オンライン自習室のメイン画像">
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="container panel-bg">
+                <h2 class="heading-color text-center fs-2 pt-5 my-5 fw-bolder">
+                    オンライン自習室の使い方
+                </h2>
+                <div class="grid4">
+                    <div class="grid-item">
+                        <h3 class="heading-color fs-5 text-center fw-bold">
+                            入室ボタンを押して<br>
+                            自習室へ入室
+                        </h3>
+                        <img class="d-block m-auto my-3" src="{{ asset('assets/in_button.png') }}" alt="オンライン自習室へは入室ボタンを押して入りましょう">
+                        <p>
+                            入室ボタンを押せば、誰でもオンライン自習室へ参加できます。面倒なアカウント登録は必要ありません。
+                        </p>
+                    </div>
+                    <div class="grid-item">
+                        <h3 class="heading-color fs-5 text-center fw-bold">
+                            ポモドーロタイマーが<br>
+                            カウント開始
+                        </h3>
+                        <img class="d-block m-auto my-3" src="{{ asset('assets/timer.png') }}" alt="オンライン自習室は入室入室するとタイマーが動きます。">
+                        <p>
+                            自習室に入室するとポモドーロタイマーのカウントが始まります。タイマーの表示に合わせて学習しましょう。
+                        </p>
+                    </div>
+                    <div class="grid-item">
+                        <h3 class="heading-color fs-5 text-center fw-bold">
+                            一緒に勉強している<br>
+                            仲間の学習時間も<br>
+                            確認できます
+                        </h3>
+                        <img class="d-block m-auto my-3" src="{{ asset('assets/member_list.png') }}" alt="オンライン自習室へは入室ボタンを押して入りましょう">
+                        <p>
+                            入室ボタンを押せば、誰でもオンライン自習室へ参加できます。面倒なアカウント登録は必要ありません。
+                        </p>
+                    </div>
+                    <div class="grid-item">
+                        <h3 class="heading-color fs-5 text-center fw-bold">
+                            学習が終わったら<br>
+                            退室ボタンで退室
+                        </h3>
+                        <img class="d-block m-auto my-3" src="{{ asset('assets/out_button.png') }}" alt="オンライン自習室へは入室ボタンを押して入りましょう">
+                        <p>
+                            学習が終了したら退室ボタンで退室しましょう。また休憩ボタンもあるので、タイマーを一時停止したい時は活用してください。
+                        </p>
+                    </div>
+                </div>
+            </div>
 
 @endsection

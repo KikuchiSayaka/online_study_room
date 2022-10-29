@@ -1,4 +1,19 @@
 // 1rem = 16px
+.main-bg-color {
+    background-color: $main-color;
+}
+.sub-bg-color {
+    background-color: $sub-color;
+}
+
+.dark-bg-color {
+    background-color: $dark-color;
+}
+
+.heading-color {
+    color: $heading-color;
+}
+
 ul {
     list-style: none;
     padding: 0;
@@ -21,6 +36,30 @@ ul {
     margin: auto;
 }
 
+.first-contents {
+    padding-top: 5rem;
+}
+
+nav.navbar {
+    position: fixed;
+    height: 4rem;
+    width: 100%;
+    top: 0;
+    color: #fff;
+    z-index: 1000;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+button.navbar-toggler.custom-toggler {
+    border: none;
+    span.navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }
+}
+
 footer {
     background-color: #6a6a6a;
     color: #fff;
@@ -29,8 +68,10 @@ footer {
 }
 
 .border-flame {
-    border: 1px solid #d1d1d1;
     border-radius: 12px;
+    box-shadow: 0 2.5rem 2rem -2rem hsl(200deg 45% 24% / 40%);
+    border: 1px solid #ececec77;
+    background-color: #fff;
 }
 
 .wrap {
@@ -73,4 +114,8 @@ div#registration-completed {
 span.rule {
     font-size: 0.8rem;
     margin: 0 0 0 .5rem;
+}
+
+.panel-bg {
+    background-color: $sub-color;
 }
