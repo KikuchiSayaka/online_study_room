@@ -55,7 +55,7 @@
                                     </label>
 
                                     <div class="">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="山田花子(最大10文字)">
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="山田花子(最大10文字)">
 
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -144,7 +144,7 @@
                         </label>
 
                         <div class="">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user() ->name }}" required autocomplete="name" autofocus>
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user() ->name }}" required autocomplete="name">
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
