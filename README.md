@@ -1,64 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# サービス名
+オンライン自習室
+[online-study-room](online-study-room)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![スクリーンショット 2022-11-01 9 15 37](https://user-images.githubusercontent.com/41233888/199133225-c0b078d3-c5e6-448b-9e0c-3026f196178e.png)
 
-## About Laravel
+# サービス概要
+同時に複数の人が集まって一緒に自習ができるサービスです。
+アカウント登録なしで「入室ボタン」を押せば気軽に利用ができ、総勉強時間の計測タイマーと学習効率が上がるという[ポモドーロテクニック](https://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%A2%E3%83%89%E3%83%BC%E3%83%AD%E3%83%BB%E3%83%86%E3%82%AF%E3%83%8B%E3%83%83%E3%82%AF)を実践できるポモドーロタイマーを使うことができます。
+基本機能の使用にはアカウント登録は不要ですが、アカウント登録をすれば学習記録を残すことができ、総勉強時間をTwitterへ投稿する機能もついています。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+https://user-images.githubusercontent.com/41233888/199133265-e33158c0-e614-4073-b5bd-fefb3f467d44.mov
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# なぜ作成したのか？
+自己学習をする際に、よく「プログラミング学習には約1,000時間以上必要」等の記事を目にするので、自分が学習する時間を計測してみようと思ったのが、きっかけです。
 
-## Learning Laravel
+最初はスマホのタイマーアプリを使用していましたが、タイマーアプリは記録をつけてくれないので、学習時間を計測してくれるアプリがなかなか見当たりませんでした。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+また、学習する際に自習室に行って勉強すると効率が上がるという話を聞いたことがあったので、オンライン自習室を探してみたところ、大学受験の塾などが塾生向けに出しているものはあったのですが、大人向けのものが見つかりませんでした。
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+こうした経験から、学習時間計測タイマーがついていて、リアルタイムで一緒に頑張っている人がいることを感じることができるサービスがあれば自分も使いたいので作成しました。
 
-## Laravel Sponsors
+# 使用の流れ
+1. Topページの入室ボタンを押す。
+2. 総学習時間計測タイマーがカウントスタート。
+3. 休憩したい時はタイマー「休憩ボタン」を押すとカウントが止まる。
+4. 学習が終わったら「退出ボタン」を押すと退室後画面に移る。
+5. 学習ログを残したい人向けにTwitterへ投稿する「Twitter投稿ボタン」も配置しています。総勉強時間の記載と、総勉強時間の画像を一緒に投稿できます。
+6. アカウント登録をすると、学習記録とユーザの紐付けができるので、マイページに学習記録が溜まっていきます。
+7. すでに登録したアカウント情報はマイページから変更可能です。
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+# 機能一覧
+## タイマー機能
+- 総学習時間計測タイマー
+- ポモドーロタイマー
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## アカウント登録
+- メール認証(アカウント登録フォームに入力したユーザへ確認メールを送付)
+- マイページにてアカウント情報の変更が可能
+- ログイン/ログアウト
+- マイページにて学習記録一覧の閲覧が可能
 
-## Contributing
+## Twitter投稿
+- アカウント登録したくないユーザーも、気軽に学習記録が付けられるようにTwitterへその日の学習記録を投稿できるTwitter投稿機能がついています。
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# 使用技術
+- HTML/CSS(Sass, Bootstrap)
+- Laravel8(PHP)
+- Javascript
+- MariaDB
+- Apache
+- Github
+- AWS(EC2, Route53, SES)
 
-## Code of Conduct
+![AWS構成図](https://user-images.githubusercontent.com/41233888/199136548-81032c74-d65b-4388-99c1-4a80220091ed.png)
+![ER図](https://user-images.githubusercontent.com/41233888/199136550-2e04fa83-7fc1-479e-9f84-9f61d42619aa.png)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 技術採用理由
+### バックエンド
+利用者が多いLaravelとRuby on railsで迷いましたが、Wordpressの使用経験があるため、PHPのフレームワークLaravelを選択しました。ApacheとMariaDBについても、Wordpressで使用されているため、馴染みがありました。
 
-## Security Vulnerabilities
+### フロントエンド
+LaravelはVue.jsが親和性が高いようだったのですが、ちょうどVue.js3が出たばかりでVue.js2とどちらで作った方が良いのか判断が難しかったこと、またそれまでVue.jsよりもReact.jsを勉強していた時間が長かったのですが、LaravelとReact.jsの組み合わせをあまり見なかったので最初に作るサービスではハードルが高そうに思えたことから、まずはバニラJavascriptに慣れてみたかったこともあり、今回はフロント部分はJavascriptだけで作成しました。
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### インフラ
+業務で使用したことがあったこと、最も一般的なクラウドホスティングサービスであることからAWSを選びました。
 
-## License
+# 工夫した点
+UI/UXと機能面を考える際に参考にしたのが[スタディキャスト](https://www.benesse.co.jp/zemi/studycast/)と[Youtube Liveのオンライン自習室](https://youtu.be/AvGbepg86JA)です。
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+スタディキャストは完全に大学受験生向けで、学習内容に自由表記ができず、受験科目を選択しなければいけない、また少しだけ試すのにもアカウント登録をしなければいけない点が不満でした。
+
+Youtube Liveのオンライン自習室はアカウント登録をしなくてもコメントに指定コマンドを入力すればLive画面上の席に自分の名前と学習内容が反映されます。ただ、学習時間を計測してくれません。また、ポモドーロタイマーがついているのですが、ユーザー単位での表示ではないので、タイミングを見計らって開始しないと活用は難しかったです。
+
+以上2つのサービスを体験してみて、24時間空いている自習室は利用者がかなり多いこと、またたとえ文字だけの席次表であっても、席次表の表示があるだけでモチベーションが上がることがわかりました。
+
+以上を踏まえ、いつでも気軽に使えるという点からスマートフォンで操作しやすく、軽快に動くように設計しました。ページ遷移は少ない方が通信環境が良くない状態が考えられるスマートフォンでも使いやすいのではないかと考え、ページ数はかなり少ないサービスになっています。
+
+これによって、企画当初の想定以上にPHPよりもJavascriptのコード量が多くなり、なんでもJavascriptで処理をしているような感覚に陥りました。ここは想定を誤った点で、Vue.jsを最初から使っておけばよかったと少し後悔してます。
