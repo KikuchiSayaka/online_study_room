@@ -70,15 +70,18 @@
                         </form>
                     </div>
                     <div class="side_bar_item  mt-sm-5 mt-4">
-                        <p class="text-center mt-5">疲れたら休憩しましょう。一時的にタイマーが止まります。</p>
-                        <button id="stop" class="btn side-button">休憩</button>
+                        <p class="text-center mt-5">
+                            疲れたら休憩しましょう。<br>
+                            一時的にタイマーが止まります。
+                        </p>
+                        <button id="stop" class="pause-button">休憩</button>
                     </div>
                     <div class="side_bar_item  mt-sm-5 mt-4">
                         <p class="text-center">勉強をやめるときはこちらへ</p>
                         <form method="POST" action="{{ route('exit.index') }}">
                             @csrf
-                            {{-- <a href="/exit" class="btn side-button" type="button">退室</a> --}}
-                            <button class="btn side-button">退室</button>
+                            {{-- <a href="/exit" class="exit-button" type="button">退室</a> --}}
+                            <button class="exit-button">退室</button>
                         </form>
                     </div>
                 </div>

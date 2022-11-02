@@ -11577,6 +11577,38 @@ dl.pomodoro_timer dd span {
   padding: 0;
 }
 
+.pause-button {
+  color: #fff;
+  background-color: #6a6a6a;
+  border: none;
+  border-radius: 2rem;
+  font-weight: bold;
+  width: 10rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  padding: 0;
+}
+
+.exit-button {
+  color: #fff;
+  background-color: #222329;
+  border: none;
+  border-radius: 2rem;
+  font-weight: bold;
+  width: 10rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  padding: 0;
+}
+
 .seating_chart {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
