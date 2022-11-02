@@ -7,7 +7,6 @@
 @section('js')
     <script src="{{ asset('js/timer.js') }}" defer></script>
     <script src="{{ asset('js/userInfo.js') }}" defer></script>
-    <script src="{{ asset('js/pomodoroTimer.js') }}" defer></script>
 @endsection
 
 @section('content')
