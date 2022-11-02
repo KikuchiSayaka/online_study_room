@@ -11556,12 +11556,12 @@ dl.pomodoro_timer dd {
     font-size: 1rem;
   }
 }
-dl.pomodoro_timer dd span {
+dl.pomodoro_timer dd span#pomodoro-timer {
   font-size: 2.5rem;
   color: #3c3737;
 }
 @media (min-width: 769px) {
-  dl.pomodoro_timer dd span {
+  dl.pomodoro_timer dd span#pomodoro-timer {
     font-size: 4.5rem;
   }
 }
