@@ -22,10 +22,10 @@
 
 @section('content')
     <div class="first-contents">
-        @if(!Auth::user()->email_verify_at)
-                <h2 class="fs-5 text-center attention text-white py-2 bg-danger">
-                    現在仮登録中です。お送りしたメールにあるリンクボタンを押して、本登録処理を完了してください。
-                </h2>
+        @if( !Auth::user()->email_verify_at && Auth::user()->email)
+            <h2 class="fs-5 text-center attention text-white py-2 bg-danger">
+                現在仮登録中です。お送りしたメールにあるリンクボタンを押して、本登録処理を完了してください。
+            </h2>
         @endif
         <div class="container border-flame w-9 py-sm-5 py-3 my-4">
             <h2 class="fs-4 text-center mb-3">勉強お疲れ様でした。</h2>

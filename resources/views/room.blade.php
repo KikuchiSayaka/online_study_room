@@ -13,11 +13,10 @@
 @section('content')
 
         <div class="first-contents">
-            @if(!Auth::user()->email_verify_at)
-            <h2 class="fs-5 text-md-center attention text-white p-2 bg-danger">
-                現在仮登録中です。お送りしたメールにあるリンクボタンを押して、本登録処理を完了してください。
-            </h2>
-
+            @if( !Auth::user()->email_verify_at && Auth::user()->email)
+                <h2 class="fs-5 text-md-center attention text-white p-2 bg-danger">
+                    現在仮登録中です。お送りしたメールにあるリンクボタンを押して、本登録処理を完了してください。
+                </h2>
             @endif
             <div class="container d-sm-flex justify-content-center my-sm-4 my-3">
                 <div class="room-list border-flame px-sm-5 px-2 py-5">
