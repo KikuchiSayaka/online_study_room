@@ -24,17 +24,17 @@
 
     // 休憩, 再開ボタンの処理
     const stop = document.getElementById("stop");
-    let flag = 0;
+    let pauseFlag = 0;
 
     stop.addEventListener("click", () => {
-        if (flag === 0) {
+        if (pauseFlag === 0) {
             window.clearInterval(timerVariable);
             stop.innerHTML = "再開";
-            flag = 1;
+            pauseFlag = 1;
         } else {
             timerVariable = setInterval(countUpTimer, 1000);
             stop.innerHTML = "休憩";
-            flag = 0;
+            pauseFlag = 0;
         }
     });
 
@@ -69,5 +69,35 @@
             // 時間の表示部分を更新
             otherUserTimes[i].innerHTML = otherHour + ":" + otherMin;
         }
+    }
+
+    // ポモドーロタイマー
+    // 秒換算なので25 * 60
+    let remainingSeconds = 25 * 60;
+    let pomodoroFlag = 1;
+    let pomodoroTimerVariable = setInterval(pomodoroTimer, 1000);
+
+    function pomodoroTimer() {
+        --remainingSeconds;
+        let minute = String(Math.floor(remainingSeconds / 60)).padStart(2, '0');
+        let seconds = String(remainingSeconds - minute * 60).padStart(2, '0');
+        document.getElementById("pomodoro-timer").innerHTML = minute + ":" + seconds;
+
+        if (remainingSeconds === 0) {
+            if (pomodoroFlag === 1) {
+                pomodoroFlag = 2;
+                remainingSeconds = 5 * 60;
+                document.getElementById("work-or-rest").style.color = "#e70000";
+                document.getElementById("pomodoro-timer").style.color = "#e70000";
+                document.getElementById("work-or-rest").innerHTML = '休憩';
+            } else {
+                pomodoroFlag === 1;
+                remainingSeconds = 25 * 60;
+                document.getElementById("work-or-rest").style.color = "#969696";
+                document.getElementById("pomodoro-timer").style.color = "#000";
+                document.getElementById("work-or-rest").innerHTML = '学習';
+            }
+        }
+        return remainingSeconds;
     }
 }
