@@ -27,7 +27,10 @@
                         </dl>
                         <dl class="pomodoro_timer">
                             <dt>ポモドーロタイマー</dt>
-                            <dd>学習 <span id="pomodoro-timer">25:00</span></dd>
+                            <dd>
+                                <span id="work-or-rest">学習</span>
+                                <span id="pomodoro-timer">25:00</span>
+                            </dd>
                         </dl>
                     </div>
                     <div class="seating_chart text-center">
