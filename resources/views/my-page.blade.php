@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="first-contents">
-        @if(!Auth::user()->email_verify_at)
+        @if( !Auth::user()->email_verify_at && Auth::user()->email)
             <h2 class="fs-5 text-center attention text-white py-2 bg-danger">
                 現在仮登録中です。お送りしたメールにあるリンクボタンを押して、本登録処理を完了してください。
             </h2>
