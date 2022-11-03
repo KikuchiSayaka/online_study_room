@@ -22,21 +22,6 @@
             hour + ":" + minute + ":" + seconds;
     }
 
-    // 休憩, 再開ボタンの処理
-    const stop = document.getElementById("stop");
-    let pauseFlag = 0;
-
-    stop.addEventListener("click", () => {
-        if (pauseFlag === 0) {
-            window.clearInterval(timerVariable);
-            stop.innerHTML = "再開";
-            pauseFlag = 1;
-        } else {
-            timerVariable = setInterval(countUpTimer, 1000);
-            stop.innerHTML = "休憩";
-            pauseFlag = 0;
-        }
-    });
 
     // 他のオンラインユーザのタイマーを1分ごとに時間を+1分カウントアップさせる
     let otherUserTimeCountUp = setInterval(otherUserCountUpFunc, 60000);
@@ -100,4 +85,23 @@
         }
         return remainingSeconds;
     }
+
+
+    // 休憩, 再開ボタン
+    const stop = document.getElementById("stop");
+    let pauseFlag = 0;
+
+    stop.addEventListener("click", () => {
+        if (pauseFlag === 0) {
+            window.clearInterval(timerVariable);
+            window.clearInterval(pomodoroTimerVariable);
+            stop.innerHTML = "再開";
+            pauseFlag = 1;
+        } else {
+            timerVariable = setInterval(countUpTimer, 1000);
+            pomodoroTimerVariable = setInterval(pomodoroTimer, 1000);
+            stop.innerHTML = "休憩";
+            pauseFlag = 0;
+        }
+    });
 }
