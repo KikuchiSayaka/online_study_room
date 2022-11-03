@@ -99,84 +99,86 @@
             <div class="card-body col-md-5 m-auto">
                 <div id="error-message"></div>
                 <form method="POST" action="{{ route('user.store') }}">
-                                @csrf
+                    @csrf
 
-                                <div class="mb-4">
-                                    <label for="name" class="required col-form-label">
-                                        {{ __('ユーザー名') }}
-                                        <span class="rule">(最大10文字)</span>
-                                    </label>
+                    <div class="mb-4">
+                        <label for="name" class="required col-form-label">
+                            {{ __('ユーザー名') }}
+                            <span class="rule">(最大10文字)</span>
+                        </label>
 
-                                    <div class="">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="山田花子(最大10文字)">
+                        <div class="">
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="山田花子(最大10文字)">
 
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
 
-                                <div class="mb-4">
-                                    <label for="email" class="required col-form-label">{{ __('Eメールアドレス') }}</label>
+                    <div class="mb-4">
+                        <label for="email" class="required col-form-label">{{ __('Eメールアドレス') }}</label>
 
-                                    <div class="">
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="example@mail.com">
+                        <div class="">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="example@mail.com">
 
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
 
-                                <div class="mb-4">
-                                    <label for="password" class="required col-form-label">
-                                        {{ __('パスワード') }}
-                                        <span class="rule">(英数字8文字以上)</span>
-                                    </label>
+                    <div class="mb-4">
+                        <label for="password" class="required col-form-label">
+                            {{ __('パスワード') }}
+                            <span class="rule">(英数字8文字以上)</span>
+                        </label>
 
-                                    <div class="">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" value="{{ old('password') }}" placeholder="パスワード(英数字8文字以上)">
+                        <div class="">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" value="{{ old('password') }}" placeholder="パスワード(英数字8文字以上)">
 
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
 
-                                <div class="mb-4">
-                                    <label for="password-confirm" class="required col-form-label">
-                                        {{ __('パスワード再入力') }}
-                                        <span class="rule">(英数字8文字以上)</span>
-                                    </label>
+                    <div class="mb-4">
+                        <label for="password-confirm" class="required col-form-label">
+                            {{ __('パスワード再入力') }}
+                            <span class="rule">(英数字8文字以上)</span>
+                        </label>
 
-                                    <div class="">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" value="{{ old('password_confirmation') }}" placeholder="確認パスワード(英数字8文字以上)">
-                                    </div>
-                                </div>
+                        <div class="">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" value="{{ old('password_confirmation') }}" placeholder="確認パスワード(英数字8文字以上)">
+                            </div>
+                        </div>
 
-                                <div class="row mb-0">
-                                    <div class="text-center">
-                                        <button id="store-btn" type="button" class="btn btn-primary px-5 py-2 mt-3 mb-5">
-                                            {{ __('登録') }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                    <div class="row mb-0">
+                        <div class="text-center">
+                            <button id="store-btn" type="button" class="btn btn-primary px-5 py-2 mt-3 mb-5">
+                                {{ __('登録') }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </div>
-            <div id="registration-completed" class="container border-flame w-9 py-sm-5 py-5 my-5">
-                <div class="wrap">
-                    <h3 class="mb-4 text-center">仮登録が完了しました</h3>
-                    <p class="mb-2">入力いただいたメールアドレスへ仮登録確認のメールをお送りしました。</p>
-                    <p class="mb-5">メール内にある確認リンクを押して、会員登録を完了してください。</p>
-                    <p class="mb-5">メールが届いていない方は、<a href="#">こちら</a>より運営へお問い合わせください。</p>
-                    <p class="fz-7">※ ご登録いただいた情報の変更はヘッダーメニューのマイページより変更いただけます。</p>
+
+            <div id="registration-completed" class="pb-5">
+                <div class="container border-flame w-9 py-sm-5 py-5 my-5">
+                    <div class="wrap">
+                        <h3 class="mb-4 text-center">仮登録が完了しました</h3>
+                        <p class="mb-2">入力いただいたメールアドレスへ仮登録確認のメールをお送りしました。</p>
+                        <p class="mb-5">メール内にある確認リンクを押して、会員登録を完了してください。</p>
+                        <p class="mb-5">メールが届いていない方は、<a href="#">こちら</a>より運営へお問い合わせください。</p>
+                        <p class="fz-7">※ ご登録いただいた情報の変更はヘッダーメニューのマイページより変更いただけます。</p>
+                    </div>
                 </div>
             </div>
         @endif

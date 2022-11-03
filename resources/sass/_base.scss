@@ -1,4 +1,18 @@
 // 1rem = 16px
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+body {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+
 .main-bg-color {
     background-color: $main-color;
 }
@@ -60,13 +74,6 @@ button.navbar-toggler.custom-toggler {
     }
 }
 
-footer {
-    background-color: $middle-dark-color;
-    color: #fff;
-    font-size: 10px;
-    padding: 1.5rem;
-}
-
 .border-flame {
     border-radius: 12px;
     box-shadow: 0 2.5rem 2rem -2rem hsl(200deg 45% 24% / 40%);
@@ -118,4 +125,16 @@ span.rule {
 
 .panel-bg {
     background-color: $sub-color;
+}
+
+
+footer {
+    background-color: $middle-dark-color;
+    color: #fff;
+    font-size: 10px;
+    padding: 1.5rem;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
