@@ -90,7 +90,7 @@
             </div>
         </div>
         @if(empty($email))
-            <div id="create-account-form" class="container border-flame w-9 py-sm-5 py-3 my-5">
+            <div id="create-account-form" class="container border-flame w-9 py-5 my-5">
                 <h3 class="text-center mb-3">新規会員登録</h3>
                 <p class="text-center">
                     会員登録をしていただくと、 勉強した時間の記録を残すことができます。
@@ -166,7 +166,7 @@
                                     {{ __('登録') }}
                                 </button>
                             </div>
-                        </div>
+                        <!-- </div> -->
                     </form>
                 </div>
             </div>

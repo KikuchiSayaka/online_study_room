@@ -12,7 +12,7 @@
     // 新規会員登録フォーム(ユーザー名とEメールアドレス、パスワード)
     // =======================================================================
     soreBtn?.addEventListener("click", () => {
-        navDropdown.innerHTML = name.value;
+        // navDropdown.innerHTML = name.value;
 
         // 会員登録のボタンを押した時にデータベースへ
         let url = "/user/store";
