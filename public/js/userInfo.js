@@ -112,7 +112,7 @@
     // =======================================================================
     soreBtn?.addEventListener("click", () => {
         yourNameOutput.innerHTML = name.value;
-        navDropdown.innerHTML = name.value;
+        // navDropdown.innerHTML = name.value;
 
         // 会員登録のボタンを押した時にデータベースへ
         let url = "/user/store";

@@ -107,8 +107,10 @@
             </div>
         </nav>
 
-
+        <div class="pb-5">
             @yield('content')
+        </div>
+
         <footer class="text-center">
             <small>© 2022 Online Study Room All rights reserved.</small>
         </footer>

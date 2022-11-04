@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="container panel-bg">
+        <div class="container panel-bg pb-5">
                 <h2 class="heading-color text-center fs-2 pt-5 my-5 fw-bolder">
                     オンライン自習室の使い方
                 </h2>
