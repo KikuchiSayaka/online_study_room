@@ -12,7 +12,7 @@
     <head prefix="og: https://ogp.me/ns#">
     <meta property="og:url" content="online-study-room.jp" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="オンライン自習室" />
+    <meta property="og:title" content="ポモドーロタイマー付きオンライン自習室" />
     <meta property="og:description" content="オンライン自習室 | 無料・アカウント登録なし！ポモドーロタイマー付き。社会人、中学生、小学生、高校生、大学生、誰でも気軽に使えます。" />
     <meta property="og:site_name" content="オンライン自習室" />
     <meta property="og:image" content=" サムネイル画像のURL" />
@@ -23,12 +23,12 @@
 @section('content')
 
         <div class="first-content top-cover text-white main-bg-color first-contents">
-            <div class="container">
+            <div class="container overflow-hidden">
                 <div class="d-md-flex align-items-center m-auto justify-content-center">
                     <div class="right">
                         <h2 class="mb-1 fs-2 fw-bolder">
                             登録なしですぐ始められる</br>
-                            <span class="fs-1 mt-1">オンライン自習室</span>
+                            <span class="fs-1 mt-1">無料オンライン自習室</span>
                         </h2>
                         <p class="mt-3 fs-md-5">
                             入室ボタンを押すと、すぐにポモドーロタイマー付き自習室で勉強が始められます。
