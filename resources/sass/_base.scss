@@ -74,6 +74,26 @@ button.navbar-toggler.custom-toggler {
     }
 }
 
+.navbar-collapse {
+    @media (max-width: 768px) {
+        align-items: center;
+        background-color: rgba(0, 0, 0, .9);
+        padding: 2rem;
+        text-align: center;
+        margin: 1rem 0 0 0;
+    }
+
+}
+li.nav-item a {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    @media (max-width: 768px) {
+        padding: 2rem;
+
+    }
+}
+
 .border-flame {
     border-radius: 12px;
     box-shadow: 0 2.5rem 2rem -2rem hsl(200deg 45% 24% / 40%);

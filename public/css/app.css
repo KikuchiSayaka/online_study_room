@@ -11359,6 +11359,27 @@ button.navbar-toggler.custom-toggler span.navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
+@media (max-width: 768px) {
+  .navbar-collapse {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 2rem;
+    text-align: center;
+    margin: 1rem 0 0 0;
+  }
+}
+
+li.nav-item a {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  li.nav-item a {
+    padding: 2rem;
+  }
+}
+
 .border-flame {
   border-radius: 12px;
   box-shadow: 0 2.5rem 2rem -2rem rgba(34, 70, 89, 0.4);
@@ -11444,6 +11465,7 @@ footer {
 }
 .right p {
   line-height: 1.7;
+  letter-spacing: 0.07em;
 }
 
 .btn.join-btn {
@@ -11476,7 +11498,9 @@ footer {
 }
 .left img {
   width: 70%;
-  overflow: hidden;
+  width: 85%;
+  right: -16%;
+  position: relative;
 }
 @media (min-width: 769px) {
   .left img {
