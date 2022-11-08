@@ -29,7 +29,7 @@ class EmailChangeRequest extends FormRequest
     {
 
         return [
-            'email' => ['string', 'email', 'unique:users', 'nullable'],
+            'email' => ['required', 'string', 'email', 'max:256', 'unique:users'],
         ];
     }
 
