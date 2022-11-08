@@ -141,7 +141,7 @@
             </p>
 
             <div class="card-body col-md-5 m-auto">
-                <div id="error-message"></div>
+
                 <form method="POST" action="{{ route('user.name-change') }}">
                     @csrf
                     <div class="mb-3">
@@ -162,6 +162,7 @@
                     </div>
                     <div class="row mb-0">
                         <div class="text-end">
+                            <div id="name-message"></div>
                             <button id="name-change-btn" type="button" class="btn btn-primary px-5 py-2 mb-5">
                                     {{ __('変更') }}
                             </button>
@@ -185,6 +186,7 @@
                     </div>
                     <div class="row mb-0">
                         <div class="text-end">
+                            <div id="email-message"></div>
                             <button id="email-change-btn" type="button" class="btn btn-primary px-5 py-2 mb-5">
                                     {{ __('変更') }}
                             </button>
@@ -223,6 +225,7 @@
 
                     <div class="row mb-0">
                         <div class="text-end">
+                            <div id="password-message"></div>
                             <button id="password-change-btn" type="button" class="btn btn-primary px-5 py-2 mb-5">
                                     {{ __('変更') }}
                             </button>

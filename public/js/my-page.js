@@ -95,12 +95,16 @@
             .then((result) => {
                 if (result.errors) {
                     console.log(result);
-                    let errorMessage = document.getElementById("error-message");
+                    let errorMessage = document.getElementById("name-message");
 
                     errorMessage.innerHTML = `
-                        <ul>
-                            <li>${result.errors.name || ""}</li>
-                        </ul>
+                        <p>${result.errors.name || ""}</p>
+                    `;
+                } else {
+                    let completeMessage = document.getElementById("name-message");
+
+                    completeMessage.innerHTML = `
+                        <p class="text-primary">${'ユーザー名の変更が完了しました！'}</p>
                     `;
                 }
             })
@@ -133,12 +137,16 @@
             .then((result) => {
                 if (result.errors) {
                     console.log(result);
-                    let errorMessage = document.getElementById("error-message");
+                    let errorMessage = document.getElementById("email-message");
 
                     errorMessage.innerHTML = `
-                        <ul>
-                            <li>${result.errors.email || ""}</li>
-                        </ul>
+                        <p>${result.errors.email || ""}</p>
+                    `;
+                } else {
+                    let completeMessage = document.getElementById("email-message");
+
+                    completeMessage.innerHTML = `
+                        <p class="text-primary">${'Eメールアドレスの変更が完了しました！'}</p>
                     `;
                 }
             })
@@ -170,15 +178,24 @@
                 return res.json();
             })
             .then((result) => {
-                console.log(result);
-                let errorMessage = document.getElementById("error-message");
+                if (result.errors) {
+                    console.log(result);
+                    let errorMessage = document.getElementById("password-message");
 
-                errorMessage.innerHTML = `
-                <ul>
-                    <li>${result.errors.password || ""}</li>
-                    <li>${result.errors.password_confirmation || ""}</li>
-                </ul>
-                `;
+                    errorMessage.innerHTML = `
+                    <ul>
+                        <li>${result.errors.password || ""}</li>
+                        <li>${result.errors.password_confirmation || ""}</li>
+                    </ul>
+                    `;
+                } else {
+                    let completeMessage = document.getElementById("password-message");
+
+                    completeMessage.innerHTML = `
+                        <p class="text-primary">${'パスワードの変更が完了しました！'}</p>
+                    `;
+                }
+
             })
             .catch((error) => {
                 console.error("失敗", error);
