@@ -11413,11 +11413,16 @@ li.nav-item a {
   font-weight: bold;
 }
 
-div#error-message ul {
-  width: 60%;
-  margin: 0 auto 1rem;
-  text-align: center;
+#name-message, #email-message, #password-message {
+  font-size: 0.8rem;
+  margin: 0 auto;
   color: #ab1212;
+}
+@media (min-width: 769px) {
+  #name-message, #email-message, #password-message {
+    width: 60%;
+    text-align: center;
+  }
 }
 
 div#registration-completed {
