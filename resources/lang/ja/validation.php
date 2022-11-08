@@ -123,7 +123,7 @@ return [
         'array' => ':attributeの項目は、:size個にしてください。',
     ],
     'starts_with' => ':attributeは、次のいずれかで始まる必要があります。:values',
-    'string' => ':attributeには、文字を入力してください。',
+    'string' => ':attributeに文字を入力してください。',
     'timezone' => ':attributeには、有効なタイムゾーンを入力してください。',
     'unique' => '入力された:attributeは既に使用されています。',
     'uploaded' => ':attributeのアップロードに失敗しました。',

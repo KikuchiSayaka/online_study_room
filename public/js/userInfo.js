@@ -82,9 +82,7 @@
     // ユーザー名と学習内容だけを変更するフォーム
     // =======================================================================
     yourInfoBtn.addEventListener("click", () => {
-        yourNameOutput.innerHTML = yourName.value;
-        learningContentOutput.innerHTML = learningContent.value;
-        navDropdown.innerHTML = yourName.value;
+        // navDropdown.innerHTML = yourName.value;
 
         // 入力ボタンを押した時に席次表だけでなく、データベースも一緒に更新
         let url = "/user/update";
@@ -102,9 +100,32 @@
             }),
         })
             .then((res) => {
-                console.log(res);
+                console.log(res.status);
+                return res.json();
             })
-            .catch((err) => console.log(err));
+            .then((result) => {
+                if (result.errors) {
+                    console.log(result);
+                    let errorMessage = document.getElementById("change-message");
+
+                    errorMessage.innerHTML = `
+                    <ul>
+                        <li>${result.errors.name || ""}</li>
+                        <li>${result.errors.content || ""}</li>
+                    </ul>
+                    `;
+                } else {
+                    yourNameOutput.innerHTML = yourName.value;
+                    learningContentOutput.innerHTML = learningContent.value;
+                    let completeMessage = document.getElementById("change-message");
+                    completeMessage.innerHTML = `
+                        <p class="text-primary">${'変更が完了しました！'}</p>
+                    `;
+                }
+            })
+            .catch((error) => {
+                console.error("失敗", error);
+            });
     });
 
     // =======================================================================
