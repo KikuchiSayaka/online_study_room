@@ -58,16 +58,28 @@
                 </div>
                 <div class="side_bar col-sm-3 ms-sm-3">
                     <div class="side_bar_item  mt-sm-5 mt-4">
-                        <p class="">入力するとあなたの席に反映されます。同じお部屋の人にも見えるので、トラブル防止のため個人情報は入力しないようにしましょう。</p>
+                        <p class="">
+                            入力するとあなたの席に反映されます。<br>
+                            同じお部屋の人にも見えるので、トラブル防止のため個人情報は入力しないようにしましょう。
+                        </p>
 
                         <form method="POST" action="{{ route('user.update') }}">
                             @csrf
-                            <div class="input-group flex-nowrap my-2">
-                                <input id="your-name" type="text" class="form-control" placeholder="新しいユーザー名(最大10文字)" aria-label="新しいユーザー名(最大10文字)" aria-describedby="addon-wrapping">
+                            <div class="my-2">
+                                <label for="name" class="required col-form-label">
+                                    {{ __('ユーザー名') }}
+                                    <span class="rule">(最大10文字)</span>
+                                </label>
+                                <input id="your-name" type="text" class="form-control" placeholder="山田太郎" aria-label="新しいユーザー名(最大10文字)" aria-describedby="addon-wrapping">
                             </div>
-                            <div class="input-group flex-nowrap">
-                                <input id="learning-content" type="text" class="form-control" placeholder="勉強内容(最大10文字)" aria-label="勉強内容(最大10文字)" aria-describedby="addon-wrapping">
+                            <div class="">
+                                <label for="name" class="required col-form-label">
+                                    {{ __('勉強内容') }}
+                                    <span class="rule">(最大10文字)</span>
+                                </label>
+                                <input id="learning-content" type="text" class="form-control" placeholder="特になし" aria-label="勉強内容(最大10文字)" aria-describedby="addon-wrapping">
                             </div>
+                            <div id="change-message"></div>
                             <input id="your-info-btn" class="btn side-button" type="button" value="変更">
                         </form>
                     </div>

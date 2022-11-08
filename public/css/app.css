@@ -11413,13 +11413,13 @@ li.nav-item a {
   font-weight: bold;
 }
 
-#name-message, #email-message, #password-message {
+#name-message, #email-message, #password-message, #change-message {
   font-size: 0.8rem;
   margin: 0 auto;
   color: #ab1212;
 }
 @media (min-width: 769px) {
-  #name-message, #email-message, #password-message {
+  #name-message, #email-message, #password-message, #change-message {
     width: 60%;
     text-align: center;
   }
